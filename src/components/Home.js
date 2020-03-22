@@ -5,7 +5,7 @@ import "../style.css"
 export default class Home extends Component {
     componentDidMount() {
         setInterval(() => {
-            var i = Math.floor((Math.random() * 10) + 1);
+            var i = Math.floor((Math.random() * 22) + 1);
             var source = '/' + i.toString() + '.jpg'
             var image = document.getElementById('image')
             image.src = source
