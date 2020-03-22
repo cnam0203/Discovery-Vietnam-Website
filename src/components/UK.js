@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-
+import '../style.css'
 
 export default class Uk extends Component {
     render() {
         return (
-            <div style="margin: auto">
-                BIENVENUE AUX ROYAUMES-UNIS
+            <div className="center">
+                <h1 id="bienvenue">BIENVENUE AUX ROYAUMES-UNIS</h1>
                 <br/>
-                <br/>
-                <br/>
-                <img src='/1.jpg' width="100%" />
+                <img src='/1.jpg'  />
             </div>
         )
     }

@@ -31,6 +31,14 @@ app.use(express.static(path.join(__dirname, '../asset')));
 app.use(express.static(path.join(__dirname, '../uploads')));
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use('/static', express.static(path.join(__dirname, '../uploads')))
+
+app.get('/getRandomImage', (req, res) => {
+    var i = Math.floor((Math.random() * 36) + 1);
+    var link = '../uploads/' + i.toString() + '.jpg';
+    console.log(link)
+    res.sendFile(path.join(__dirname, link))
+})
+
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, '../dist/index.html'))
 });
@@ -54,6 +62,7 @@ app.get('/', (req, res) => {
     console.log(req.cookies);
     res.send('<b>hello Nam</b><ul><li>nam</li><li>hoi</li></ul>')
 });
+
 
 app.get('/hello', (req, res) => {
     var obj = {

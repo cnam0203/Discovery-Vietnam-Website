@@ -1,16 +1,73 @@
 img{
-    width: '100%'
+    width: '100%';
+    margin-bottom: 20;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
 }
 
 .my-link{
     color: #a86d32;
-    width: 150;
-    height: 30
+    text-decoration: none;
+}
+
+.none{
+    text-decoration: none;
+}
+
+.none:visited {
+    color: inherit;
+}
+
+#button {
+    margin-left: 45%;
+    margin-bottom: 10;
+}
+
+.menu{
+    height: 20;
+    margin-right: 20;
+    padding: 0;
+    float: left;
+    font-size: 24;
+    text-align: center;
+    font-family: "Trebuchet MS", Helvetica, sans-serif
 }
 
 #my-link{
     background-color: #a86d32;
     font-size: 24;
     width: 150;
-    height: 30
+    height: 30;
+}
+
+#bienvenue{
+    color: #f0c84f;
+    width: 100%;
+    text-align: center;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+#name{
+    color: #474439;
+    width: 100%;
+    text-align: center;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+#title{
+    color: #f0c84f;
+    width: 100%;
+    text-align: center;
+    font-family:  "Comic Sans MS"
+}
+
+.center{
+    margin-left: 40;
+    margin-right: 40;
+}
+
+#select{
+    margin-left: 40;
+    margin-right: 40;
 }

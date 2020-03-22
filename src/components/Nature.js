@@ -1,25 +1,23 @@
 import React, {Component} from 'react';
-
+import '../style.css'
 
 export default class Nature extends Component {
     render() {
         return (
-            <div style="margin: auto">
-                LA NUTURE - THE NATURE
+            <div className="center">
+                <h1 id="bienvenue">LA BEAUTÉ de NATURE - THE NATURE</h1>
                 <br/>
+                <img src='/5.jpg'  />
                 <br/>
+                <img src='/6.jpg'  />
                 <br/>
-                <img src='/5.jpg' width="100%" />
+                <img src='/7.jpg'  />
                 <br/>
-                <img src='/6.jpg' width="100%" />
+                <img src='/8.jpg'  />
                 <br/>
-                <img src='/7.jpg' width="100%" />
+                <img src='/9.jpg'  />
                 <br/>
-                <img src='/8.jpg' width="100%" />
-                <br/>
-                <img src='/9.jpg' width="100%" />
-                <br/>
-                <img src='/10.jpg' width="100%" />
+                <img src='/10.jpg'  />
                 <br/>
             </div>
         )
