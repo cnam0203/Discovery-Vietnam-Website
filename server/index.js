@@ -30,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../asset')));
 app.use(express.static(path.join(__dirname, '../uploads')));
 app.use(express.static(path.join(__dirname, '../dist')));
+app.use('/static', express.static(path.join(__dirname, '../uploads')))
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, '../dist/index.html'))
 });
@@ -48,8 +49,6 @@ app.get('/cookie', (req, res) => {
     res.cookie('facebook', 'demain');
     res.send('cookie is set');
 })
-
-app.use('/static', express.static(path.join(__dirname, '../uploads')))
 
 app.get('/', (req, res) => {
     console.log(req.cookies);
