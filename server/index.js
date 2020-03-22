@@ -32,9 +32,10 @@ app.use(express.static(path.join(__dirname, '../uploads')));
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use('/static', express.static(path.join(__dirname, '../uploads')))
 
-app.get('/getRandomImage', (req, res) => {
-    var i = Math.floor((Math.random() * 36) + 1);
-    var link = '../uploads/' + i.toString() + '.jpg';
+app.get('/getRandomImage/:id', (req, res) => {
+   var reqUrl = req.url
+   var index = reqUrl.split('/')
+    var link = '../uploads/' + index[index.length - 1] + '.jpg';
     console.log(link)
     res.sendFile(path.join(__dirname, link))
 })

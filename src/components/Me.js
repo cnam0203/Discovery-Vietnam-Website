@@ -3,7 +3,8 @@ import '../style.css'
 
 export default class France extends Component {
     changeUrl() {
-        location.href = "/me";
+        var i = Math.floor((Math.random() * 36) + 1);
+        document.getElementById('image').src = '/getRandomImage/' + i.toString();
     }
     render() {
         return (
@@ -12,7 +13,7 @@ export default class France extends Component {
                 <h5 id="title">Let's relax with this picture ^^</h5>
                 <button id="button" onClick={this.changeUrl}>Click me</button>
                 <br/>
-                <img src='/getRandomImage' />
+                <img src='/getRandomImage/1' id="image"/>
             </div>
         )
     }
