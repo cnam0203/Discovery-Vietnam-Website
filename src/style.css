@@ -1,0 +1,16 @@
+img{
+    width: '100%'
+}
+
+.my-link{
+    color: #a86d32;
+    width: 150;
+    height: 30
+}
+
+#my-link{
+    background-color: #a86d32;
+    font-size: 24;
+    width: 150;
+    height: 30
+}

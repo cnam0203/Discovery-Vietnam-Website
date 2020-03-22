@@ -1,4 +1,9 @@
-import sum from './sum.js';
-import './styles.css'
-console.log(sum(3, 5))
-document.write(sum(3, 5))
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App'
+
+
+ReactDOM.render(
+        <App/>,
+    document.getElementById("root")
+)
