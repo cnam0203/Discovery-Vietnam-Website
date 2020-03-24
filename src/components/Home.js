@@ -5,11 +5,15 @@ import "../style.css"
 export default class Home extends Component {
     componentDidMount() {
         setInterval(() => {
-            var i = Math.floor((Math.random() * 22) + 1);
-            var source = '/' + i.toString() + '.jpg'
-            var image = document.getElementById('image')
-            image.src = source
-        }, 8000);
+            var i1 = Math.floor((Math.random() * 22) + 1);
+            var source1 = '/' + i1.toString() + '.jpg'
+            var image1 = document.getElementById('image1')
+            image1.src = source1
+            var i2 = Math.floor((Math.random() * 22) + 1);
+            var source2 = '/' + i2.toString() + '.jpg'
+            var image2 = document.getElementById('image2')
+            image2.src = source2
+        }, 19000);
     }
 
      render() {
@@ -19,7 +23,16 @@ export default class Home extends Component {
                 <h2 id="name">- OWEN CHẤN NAM NGUYỄN - </h2>
                 <h4 id="title">Un voyageur - a food lover</h4>
                 <br/>
-                <img src='/17.jpg' id="image"/>
+                <div className="flip-card">
+                    <div className="flip-card-inner">
+                        <div className="flip-card-front">
+                            <img src="/0.jpg" alt="Avatar" id="image1"/>
+                        </div>
+                        <div className="flip-card-back">
+                            <img src="/1.jpg" alt="Avatar" id="image2"/>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

@@ -1,10 +1,42 @@
 img{
-    width: '100%';
     margin-bottom: 20;
+    width:100%;
+}
+
+.img-hover-zoom {
     margin-left: 20%;
     margin-right: 20%;
     width: 60%;
-}
+    height: 300;
+     /* [1.1] Set it as per your need */
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+  }
+  
+  /* [2] Transition property for smooth transformation of images */
+  .img-hover-zoom img {
+    transition: transform 20s ease;
+  }
+
+  .flip-card-front img {
+    transition: transform 20s ease;
+  }
+
+  .flip-card-front:hover img {
+    transform: scale(2);
+  }
+
+  .flip-card-back img {
+    transition: transform 20s ease;
+  }
+
+  .flip-card-back:hover img {
+    transform: scale(2);
+  }
+  
+  /* [3] Finally, transforming the image when container gets hovered */
+  .img-hover-zoom:hover img {
+    transform: scale(10);
+  }
 
 .my-link{
     color: #a86d32;
@@ -71,3 +103,45 @@ img{
     margin-left: 40;
     margin-right: 40;
 }
+
+
+.flip-card {
+    background-color: transparent;
+    width:60%;
+    height: 300;
+    margin-left: 20%;
+    margin-right: 20%;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    overflow: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  
+  /* Style the back side */
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }

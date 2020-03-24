@@ -40,9 +40,32 @@
         <br/>
         <span id="status"></span>
     </form> -->
-    <audio controls autoplay id="music" width="10%" style="margin-left:40%">
+    <div class="button-group">
+        <button id="btn-start" type="button" class="button">Start Streaming</button>
+        <button id="btn-stop" type="button" class="button">Stop Streaming</button>
+        <button id="btn-capture" type="button" class="button">Capture Image</button>
+        <button id="btn-upload" type="button" class="button">Upload Image</button>
+      </div>
+      
+      <!-- Video Element & Canvas -->
+      <div class="play-area">
+        <div class="play-area-sub">
+          <h3>The Stream</h3>
+          <video id="stream" width="320" height="240"></video>
+        </div>
+        <div class="play-area-sub">
+          <h3>The Capture</h3>
+          <canvas id="capture" width="320" height="240"></canvas>
+          <br/>
+          <br/>
+          <div style="border: 1px solid black; width: 200px; height: 50px; padding-left: 20px;" >
+            <p id="result"></p>
+          </div> 
+        </div>
+    </div>
+    <!-- <audio controls autoplay id="music" width="10%" style="visibility: hidden;" >
         <source src="/static/0.mp3" type="audio/mpeg">
-    </audio>
+    </audio> -->
 </body>
 
 </html>

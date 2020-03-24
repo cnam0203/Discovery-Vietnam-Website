@@ -1,6 +1,7 @@
 const express = require('express');
 var app = express();
 var path = require('path')
+var fs = require('fs')
 
 var cookieParser = require('cookie-parser');
 var multer = require('multer');
@@ -32,6 +33,15 @@ app.use(express.static(path.join(__dirname, '../uploads')));
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use('/static', express.static(path.join(__dirname, '../uploads')))
 
+
+app.get('/emotion', (req, res) => {
+        var spawn = require('child_process').spawn;
+        var process = spawn('python', ["./emotion.py", '../uploads/url.png'])
+        process.stdout.on('data', function(data) {
+            res.send(data.toString())
+        })
+})
+
 app.get('/getRandomImage/:id', (req, res) => {
    var reqUrl = req.url
    var index = reqUrl.split('/')
@@ -40,9 +50,21 @@ app.get('/getRandomImage/:id', (req, res) => {
     res.sendFile(path.join(__dirname, link))
 })
 
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, '../dist/index.html'))
-});
+app.post('/upload/url', function(req, res) {
+    console.log('uploaded')
+    upload(req, res, function(err) {
+        if(err) {
+            console.log('err')
+            return res.end('Err')
+        } else {
+            var spawn = require('child_process').spawn;
+            var process = spawn('python', ["./emotion.py", '../uploads/url.png'])
+            process.stdout.on('data', function(data) {
+                res.send(data.toString())
+            })
+        }
+    })
+})
 
 app.post('/upload/:id', function(req, res) {
     upload(req, res, function(err) {
@@ -53,6 +75,7 @@ app.post('/upload/:id', function(req, res) {
         }
     })
 })
+
 
 app.get('/cookie', (req, res) => {
     res.cookie('facebook', 'demain');
@@ -76,6 +99,11 @@ app.get('/hello', (req, res) => {
 app.get('/hi', (req, res) => {
     res.redirect('/hello')
 })
+
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../dist/index.html'))
+});
+
 
 
 app.listen(process.env.PORT || 5000)
