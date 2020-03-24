@@ -3,6 +3,7 @@ var app = express();
 var path = require('path')
 var fs = require('fs')
 
+
 var cookieParser = require('cookie-parser');
 var multer = require('multer');
 var storage = multer.diskStorage({
@@ -57,11 +58,26 @@ app.post('/upload/url', function(req, res) {
             console.log('err')
             return res.end('Err')
         } else {
-            var spawn = require('child_process').spawn;
-            var process = spawn('python', ["./emotion.py", '../uploads/url.png'])
-            process.stdout.on('data', function(data) {
-                res.send(data.toString())
-            })
+            var { PythonShell } = require('python-shell');
+            var options = {
+                mode: 'text',
+            };
+
+            PythonShell.run('./emotion.py', options, function (err, results) {
+                if (err) { 
+                    console.log(err)
+                    res.end(err)
+                }
+
+                // results is an array consisting of messages collected during execution
+                console.log('results: %j', results);
+                res.send(results)
+            });
+            // var spawn = require('child_process').spawn;
+            // var process = spawn('python', ["./emotion.py", '../uploads/url.png'])
+            // process.stdout.on('data', function(data) {
+            //     res.send(data.toString())
+            // })
         }
     })
 })
