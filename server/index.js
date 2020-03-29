@@ -25,10 +25,7 @@ var upload = multer({storage:storage}).single('myfile');
 
 app.use(cookieParser());
 
-// app.use(function(req, res, next) {
-//     console.log(req.url);
-//     next();
-// })
+
 app.use(express.static(path.join(__dirname, '../asset')));
 app.use(express.static(path.join(__dirname, '../uploads')));
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -68,16 +65,9 @@ app.post('/upload/url', function(req, res) {
                     console.log(err)
                     res.end(err)
                 }
-
-                // results is an array consisting of messages collected during execution
                 console.log('results: %j', results);
                 res.send(results)
             });
-            // var spawn = require('child_process').spawn;
-            // var process = spawn('python', ["./emotion.py", '../uploads/url.png'])
-            // process.stdout.on('data', function(data) {
-            //     res.send(data.toString())
-            // })
         }
     })
 })
