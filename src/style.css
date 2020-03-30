@@ -271,6 +271,15 @@ body {
   top: 10px;
   left: 45px;
 }
+
+#logo2{
+  width: 15%;
+  height: auto;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
+
 .scroll-down:before {
     position: absolute;
     top: calc(50% - 8px);

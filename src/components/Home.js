@@ -157,6 +157,7 @@ export default class Home extends Component {
                         </div>
                     </div>
                     <div className="container" id="landscape">
+                        <img src='/logo2.png' id="logo2"/>
                         <img src='./thuyen1.png' id="thuyen1" className="landscape-img"  style={{width: '10%', bottom: '25%', left: '5%'}}/>
                         <img src='./thuyen2.png' id="thuyen2" className="landscape-img"  style={{width: '10%', bottom: '10%', left: '85%'}}/>
                         <div className="box bay" data-aos="fade-left">
@@ -166,21 +167,6 @@ export default class Home extends Component {
                             </p>
                         </div>
                     </div>
-                    {/* <div className="container">
-                        <div className="box left" data-aos="zoom-in-right">
-                            <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="container" id="people">
-                        <div className="box right" data-aos="zoom-out">
-                            <h1>PEOPLE</h1>
-                            <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         )
