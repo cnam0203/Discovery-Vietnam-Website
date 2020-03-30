@@ -61,6 +61,7 @@ export default class Home extends Component {
     }
 
     scrollDown() {
+        console.log('hello')
         $('html, body').animate({scrollTop: $(document.getElementById('history')).offset().top }, 'slow');
     }
 
