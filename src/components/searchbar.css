@@ -1,0 +1,50 @@
+.example {
+    position: absolute;
+    top: 40px;
+    left: 35%;
+    box-sizing: border-box;
+    min-width: 27%;
+}
+
+/* Style the search field */
+div.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  float: left;
+  width: 80%;
+  background: #fff;
+  border: 0px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+div.example input[type=text]:focus {
+  outline-width: 0;
+}
+
+
+
+/* Style the submit button */
+div.example button {
+  float: left;
+  padding: 10px;
+  background: #fff;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  border: 0px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+div.example button:hover {
+  background: #282928;
+  color: white;
+}
+
+/* Clear floats */
+div.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}

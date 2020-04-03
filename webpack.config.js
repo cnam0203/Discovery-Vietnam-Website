@@ -31,5 +31,10 @@ module.exports = {
           test: /\.jpe?g$|\.png$|\.gif$|\.svg$|\.woff$|\.woff2$|\.eot$|\.ttf$|\.wav$|\.mp3$|\.ico$|.\mp4$/
         }
       ]
-    }
+    },
+    devServer: {
+      port: 5000,
+      contentBase: path.join(__dirname, 'dist'),
+      historyApiFallback: true // this prevents the default browser full page refresh on form submission and link change
+      }
 }

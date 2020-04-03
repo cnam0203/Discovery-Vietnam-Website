@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import MenuLink from '../components/MenuLink'
+import Navigator from '../components/Navigator'
+import Logo from '../components/Logo'
+import SearchBar from '../components/SearchBar'
 import './cuisine.css'
 
 
@@ -7,6 +9,9 @@ import './cuisine.css'
 export default class Cuisine extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            searchTxt: ''
+        }
     }
 
     componentDidMount() {
@@ -51,19 +56,9 @@ export default class Cuisine extends Component {
                 <img src='/buncha.png' id='pho-br' />
                 <img src='/banhmi.jpg' id='banhmi' />
                 <img src='/com-ga.png' id='com-ga' />
-                <div id='select-cuisine'>
-                        <MenuLink label='Home' to='/' activeOnly={true}/>
-                        <MenuLink label='History' to='/history' activeOnly={false}/>
-                        <MenuLink label='Culture' to='/culture' activeOnly={false}/>
-                        <MenuLink label='Cuisine' to='/cuisine' activeOnly={false}/>
-                        <MenuLink label='Music' to='/music' activeOnly={false}/>
-                        <MenuLink label='Beauty' to='/beauty' activeOnly={false}/>
-                </div>
-                <img src='/logo.png' id="logo-cuisine"/>
-                <form className="example" action="action_page.php">
-                    <input type="text" placeholder="Search.." name="search" />
-                    <button type="submit"><i className="fa fa-search"></i></button>
-                </form>
+                <Navigator />
+                <Logo />
+                <SearchBar />
                 <h1 className='region' id='north' style={{position: 'absolute', left: '28%', top: '70%'}}>NORTH</h1>
                 <h1 className='region' id='center' style={{position: 'absolute', left: '30%', top: '75%'}}>CENTER</h1>
                 <h1 className='region' id='south' style={{position: 'absolute', left: '32%', top: '80%'}}>SOUTH</h1>

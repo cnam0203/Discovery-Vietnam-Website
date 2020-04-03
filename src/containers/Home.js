@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import "../style.css"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom'
-import MenuLink from '../components/MenuLink'
+import Logo from '../components/Logo'
+import Navigator from '../components/Navigator'
 import Button from '../components/Button'
 
 
@@ -58,15 +58,8 @@ export default class Home extends Component {
             <div>
             <div className="container-home" id="parallax">
                 <div> 
-                        <div id="select">
-                            <MenuLink label='Home' to='/' activeOnly={true}/>
-                            <MenuLink label='History' to='/history' activeOnly={false}/>
-                            <MenuLink label='Culture' to='/culture' activeOnly={false}/>
-                            <MenuLink label='Cuisine' to='/cuisine' activeOnly={false}/>
-                            <MenuLink label='Music' to='/music' activeOnly={false}/>
-                            <MenuLink label='Beauty' to='/beauty' activeOnly={false}/>
-                        </div>
-                        <img src='/logo.png' id="logo"/>
+                        <Logo />
+                        <Navigator />
                         <div id="title-container">
                             <p className='title'>A glimpse of Vietnam</p>
                             <p className="quote">- Let's taste new experiences -</p>
