@@ -1,23 +1,11 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom'
-import Home from './components/Home'
-import NotFound from './components/NotFound'
+import Home from './containers/Home'
+import Cuisine from './containers/Cuisine'
+import NotFound from './containers/NotFound'
 import './style.css'
+import 'font-awesome/css/font-awesome.min.css'
 
-const MenuLink = ({label, to, activeOnly}) => {
-    return (
-        <Route path={to} exact={activeOnly} children={({match}) => {
-            var active = match ? 'my-link' : 'none';
-            return (
-                <nav className="menu">
-                    <h5>
-                         <NavLink className={active} to={to}>{label}</NavLink>
-                    </h5>
-                </nav>
-            )
-        }}/>
-    )
-}
 
 
 export default class App extends Component {
@@ -26,9 +14,9 @@ export default class App extends Component {
             <Router>
                 <Switch>
                     <Route path="/" exact component={Home} />
+                    <Route path="/cuisine" exact component={Cuisine} />
                     <Route component={NotFound}/>
                 </Switch>
-
             </Router>
         )
     }

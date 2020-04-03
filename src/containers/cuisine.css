@@ -1,0 +1,119 @@
+#container-cuisine {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background-image: url('../../asset/pho-br.png');
+    background-size: cover;
+    overflow: hidden;
+}
+
+#select-cuisine{
+    position: absolute;
+    top: 10px;
+    left: 65%;
+}
+
+#logo-cuisine {
+    width: 20%;
+    height: auto;
+    position: absolute;
+    top: 10px;
+    left: 45px;
+}
+
+.region {
+    box-shadow: 3px 3px 6px black;
+}
+
+#pho-br, #banhmi, #com-ga {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    object-fit: cover;
+}
+
+#north:hover, #south:hover, #center:hover {
+    color: #fa91f3;
+}
+
+/* #north:hover #pho-br{
+    animation: slideshow ease 5s;
+} */
+
+@keyframes slideshow {
+    0% {
+        left: 100%;
+        opacity: 0
+    }
+    100% {
+        left: 0%;
+        opacity: 1
+    }
+}
+
+@keyframes slidesout {
+    0% {
+        left: 0%;
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+
+  .example {
+      position: absolute;
+      top: 40px;
+      left: 35%;
+      box-sizing: border-box;
+      min-width: 27%;
+  }
+  
+  /* Style the search field */
+  form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    float: left;
+    width: 80%;
+    background: #fff;
+    border: 0px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  form.example input[type=text]:focus {
+    outline-width: 0;
+  }
+
+
+  
+  /* Style the submit button */
+  form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #fff;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    border: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  
+  form.example button:hover {
+    background: black;
+    color: white;
+  }
+  
+  /* Clear floats */
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
