@@ -75,12 +75,13 @@ img{
 
 .menu{
     text-shadow: 3px 3px 6px #000;
-    height: 20;
-    margin-right: 20;
+    height: 20px;
+    margin-right: 20px;
+    margin-top: 27px;
     padding: 0;
     float: left;
-    font-size: 24;
-    text-align: center;
+    font-size: 20px;
+    text-align: center; 
     font-family: "Trebuchet MS", Helvetica, sans-serif
 }
 
@@ -122,13 +123,14 @@ h4{
     margin: 0px 0px 15px;
 }
 
-
+#title-container {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+}
 
 .title {
-  margin-top: 500px;
-  margin-left: 50px;
-  margin-bottom: 0px;
-  font-size: 50;
+  font-size: 50px;
   text-shadow: 3px 3px 6px #000;
   width: 100%;
   text-align: center;
@@ -142,7 +144,7 @@ h4{
   font-style: italic;
   text-shadow: 3px 3px 6px #000;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 16px;
   width: 100%;
   text-align: center;
 }
@@ -264,17 +266,18 @@ body {
   height: 200px;
   width: 40%;
   align-items: center;
+  z-index: 3;
+  position: absolute;
 }
 
 .left{
-  float: left;
-  margin-left: 100px;
+  left: 10%;
+  top: 10%;
 }
 
 .right {
-  position: absolute;
   left: 55%;
-  top: 15%;
+  top: 10%;
 }
 
 .middle {
@@ -321,9 +324,10 @@ body {
 
 p , h1{
   word-spacing: 0.2em;
-  font-family: 'SF Pro Text', sans-serif;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
   letter-spacing: 0.01em;
   line-height: 1.4em;
+  z-index: 1;
 }
 
 #pho {
@@ -370,7 +374,7 @@ p , h1{
   width: 65%;
   object-fit: contain;
   position: absolute;
-  top: 35%;
+  bottom: 10%;
   left: 30%;
   animation: fadeIn ease 8s;
 }
@@ -379,7 +383,7 @@ p , h1{
   width: 85%;
   object-fit: contain;
   position: absolute;
-  top: 40%;
+  bottom: 10%;
   left: 12%;
   animation: fadeIn ease 8s;
 }
@@ -388,7 +392,7 @@ p , h1{
   width: 85%;
   object-fit: contain;
   position: absolute;
-  top: 35%;
+  bottom: 10%;
   left: 12%;
   animation: fadeIn ease 8s;
 }
@@ -456,4 +460,16 @@ p , h1{
   100% {
     opacity: 0;
   }
+}
+
+.title-content {
+  font-weight: 700;
+  font-size: 42px;
+  margin-top: 10px;
+}
+
+.content {
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 16px;
 }

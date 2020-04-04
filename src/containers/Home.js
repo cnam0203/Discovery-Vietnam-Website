@@ -74,8 +74,8 @@ export default class Home extends Component {
                             <img src="/hue.png" id="mientrung" style={{display : this.state.index == 1 ? 'block' : 'none'}}/>
                             <img src="/saigon.png" id="miennam" style={{display : this.state.index == 2 ? 'block' : 'none'}}/>
                             <div className="box left" data-aos="fade-up" >
-                                <h1>HISTORY</h1>
-                                <p>
+                                <p className='title-content'>History</p>
+                                <p className='content'>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                 </p>
                                 <Button title="Let's go" path='/history' color='white'/>
@@ -86,8 +86,8 @@ export default class Home extends Component {
                         <img src='./3mien.png' className="people-img" data-aos="fade-right" style={{width: '30%', bottom: '10%', left: '5%'}}/>
                         <img src='./dantoc.png' className="people-img" data-aos="fade-left" style={{width: '58%', bottom: '10%', left: '38%'}}/>
                         <div className="box middle" data-aos="fade-down">
-                            <h1>PEOPLE</h1>
-                            <p>
+                            <p className='title-content'>People</p>
+                            <p className='content'>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </p>
                             <Button title="Let's go" path='/people' color='black'/>
@@ -96,22 +96,22 @@ export default class Home extends Component {
                     <div className="container" id="life">
                         <img src='./life.png' className="life-img" data-aos="fade-up" style={{width: '100%', bottom: '0%'}}/>
                         <div className="box right" data-aos="fade-down">
-                            <h1>LIFE</h1>
-                            <p>
+                            <p className='title-content'>Life</p>
+                            <p className='content'>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </p>
                             <Button title="Let's go" path='/life' color='white'/>
                         </div>
                     </div>
                     <div className="container" id="culture">
-                        <img src='./trongdong.png' className="culture" data-aos="fade-up" style={{left: '15%', width: '15%', bottom: '20%'}}/>
-                        <img src='./danco.png' className="culture" data-aos="fade-down" style={{left: '28%', width: '15%', bottom: '20%'}}/>
-                        <img src='./nonla.png' className="culture" data-aos="fade-up" style={{left: '45%', width: '15%', bottom: '20%'}}/>
-                        <img src='./tranhdongho.png' className="culture" data-aos="fade-down" style={{left: '65%', width: '15%', bottom: '20%'}}/>
+                        <img src='./trongdong.png' className="culture" data-aos="fade-up" style={{left: '15%', width: '15%', bottom: '10%'}}/>
+                        <img src='./danco.png' className="culture" data-aos="fade-down" style={{left: '28%', width: '15%', bottom: '10%'}}/>
+                        <img src='./nonla.png' className="culture" data-aos="fade-up" style={{left: '45%', width: '15%', bottom: '10%'}}/>
+                        <img src='./tranhdongho.png' className="culture" data-aos="fade-down" style={{left: '65%', width: '15%', bottom: '10%'}}/>
                         <img src='./aodai.png' className="culture" data-aos="fade-up" style={{left: '85%', width: '15%', bottom: '10%'}}/>
                         <div className="box left" data-aos="fade-right" >
-                            <h1>CULTURE</h1>
-                            <p>
+                            <p className='title-content'>Cultutre</p>
+                            <p className='content'>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </p>
                             <Button title="Let's go" path='/culture' color='black'/>
@@ -124,8 +124,8 @@ export default class Home extends Component {
                         <img src="/muong.png" id="muong" data-aos="fade-right" />
                         <img src="/doidua.png" id="doidua" data-aos="fade-up"/>
                         <div className="box right" data-aos="fade-left">
-                            <h1>CUISINE</h1>
-                            <p>
+                            <p className='title-content'>Cuisine</p>
+                            <p className='content'>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </p>
                             <Button title="Let's go" path='/cuisine' color='white'/>
@@ -136,8 +136,8 @@ export default class Home extends Component {
                         <img src='./baihat.png' className="music-img" data-aos="fade-down" style={{left: '10%', width: '25%', bottom: '30%'}}/>
                         <img src='./casi.png' className="music-img" data-aos="fade-up" style={{left: '30%', width: '25%', bottom: '7%'}}/>
                         <div className="box right" data-aos="fade-down">
-                            <h1>MUSIC</h1>
-                            <p>
+                            <p className='title-content'>Music</p>
+                            <p className='content'>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </p>
                             <Button title="Let's go" path='/music' color='black'/>
@@ -148,8 +148,8 @@ export default class Home extends Component {
                         <img src='./thuyen1.png' id="thuyen1" className="landscape-img"  style={{width: '10%', bottom: '25%', left: '5%'}}/>
                         <img src='./thuyen2.png' id="thuyen2" className="landscape-img"  style={{width: '10%', bottom: '10%', left: '85%'}}/>
                         <div className="box bay" data-aos="fade-left">
-                            <h1>NATURAL BEAUTY</h1>
-                            <p>
+                            <p className='title-content'>Nature</p>
+                            <p className='content'>
                             Lorem Ipsum is simply dummy text 
                             </p>
                         </div>

@@ -17,7 +17,7 @@ export default class SearchRecipe extends Component {
                 time: '1h30min'
             }, {
                 url: '/caolau.jpg',
-                name: 'CAO LẦU',
+                name: 'Cao lầu',
                 likes: 12,
                 level: 'Easy',
                 time: '1h15min'
@@ -29,7 +29,7 @@ export default class SearchRecipe extends Component {
                 time: '1h'
             }, {
                 url: '/banhmi.jpg',
-                name: 'BANH MI',
+                name: 'Bánh mì',
                 likes: 12,
                 level: 'Easy',
                 time: '45min'
@@ -101,7 +101,7 @@ export default class SearchRecipe extends Component {
                                             {item.time}</div>
                                     </div>
                                     <div className="share">
-                                    <i className="fa fa-share icon-share"></i>SHARE</div>
+                                    <i className="fa fa-share icon-share"></i>share</div>
                                 </div>
                             )
                         })

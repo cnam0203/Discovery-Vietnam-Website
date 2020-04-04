@@ -59,9 +59,9 @@ export default class Cuisine extends Component {
                 <Navigator />
                 <Logo />
                 <SearchBar />
-                <h1 className='region' id='north' style={{position: 'absolute', left: '28%', top: '70%'}}>NORTH</h1>
-                <h1 className='region' id='center' style={{position: 'absolute', left: '30%', top: '75%'}}>CENTER</h1>
-                <h1 className='region' id='south' style={{position: 'absolute', left: '32%', top: '80%'}}>SOUTH</h1>
+                <p className='region' id='north' style={{position: 'absolute', left: '28%', top: '60%'}}>North</p>
+                <p className='region' id='center' style={{position: 'absolute', left: '33%', top: '67%'}}>Center</p>
+                <p className='region' id='south' style={{position: 'absolute', left: '38%', top: '74%'}}>South</p>
             </div>
         )
     }

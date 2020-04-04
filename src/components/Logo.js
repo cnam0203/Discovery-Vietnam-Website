@@ -1,10 +1,10 @@
-import './logo.js'
+import './logo.css'
 import React, { Component } from 'react'
 
 
 const Logo = () => {
     return (
-        <img src='/logo.png' id="logo"/>
+        <img src='/logo.png' id="logo" onClick={() => window.location.href = '/'}/>
     )
 }
 

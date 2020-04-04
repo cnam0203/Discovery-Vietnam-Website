@@ -9,19 +9,23 @@
 /* Style the search field */
 div.example input[type=text] {
   padding: 10px;
-  font-size: 17px;
+  font-size: 16px;
   float: left;
   width: 80%;
   background: #fff;
   border: 0px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif
 }
 
 div.example input[type=text]:focus {
   outline-width: 0;
 }
 
+div.example button:focus {
+  outline-width: 0;
+}
 
 
 /* Style the submit button */
@@ -30,7 +34,7 @@ div.example button {
   padding: 10px;
   background: #fff;
   color: black;
-  font-size: 20px;
+  font-size: 19px;
   cursor: pointer;
   border: 0px;
   border-top-right-radius: 20px;

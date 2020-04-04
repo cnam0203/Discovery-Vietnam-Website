@@ -5,3 +5,7 @@
     top: 10px;
     left: 45px;
 }
+
+#logo:hover {
+    cursor: pointer;
+}

@@ -16,7 +16,7 @@ export default class SearchBar extends Component {
     }
 
     onSearchTxt() {
-        window.location.href = '/cuisine/' + this.state.searchTxt
+        window.location.href = '/cuisine/search/' + this.state.searchTxt
     }
 
     render() {
