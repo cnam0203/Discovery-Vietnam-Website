@@ -22,7 +22,7 @@ export default class SearchBar extends Component {
     render() {
         return (
             <div className="example">
-                <input type="text" placeholder="Search your recipes ..." name="search" value={this.state.searchTxt} onChange={(e) => this.onChangeTxt(e.target.value)}/>
+                <input type="text" placeholder="search your recipes ..." name="search" value={this.state.searchTxt} onChange={(e) => this.onChangeTxt(e.target.value)}/>
                 <button type="submit" onClick={() => this.onSearchTxt()}><i className="fa fa-search"></i></button>
             </div>
         )

@@ -1,7 +1,7 @@
 .example {
     position: absolute;
     top: 40px;
-    left: 35%;
+    left: 30%;
     box-sizing: border-box;
     min-width: 27%;
 }
@@ -16,7 +16,9 @@ div.example input[type=text] {
   border: 0px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  font-family: "Trebuchet MS", Helvetica, sans-serif
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  box-sizing: border-box;
+  height: 38px;
 }
 
 div.example input[type=text]:focus {
@@ -34,11 +36,13 @@ div.example button {
   padding: 10px;
   background: #fff;
   color: black;
-  font-size: 19px;
+  font-size: 20px;
   cursor: pointer;
   border: 0px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  box-sizing: border-box;
+  height: 38px;
 }
 
 div.example button:hover {

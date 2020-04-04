@@ -375,7 +375,7 @@ p , h1{
   object-fit: contain;
   position: absolute;
   bottom: 10%;
-  left: 30%;
+  right: 5%;
   animation: fadeIn ease 8s;
 }
 
@@ -383,8 +383,8 @@ p , h1{
   width: 85%;
   object-fit: contain;
   position: absolute;
-  bottom: 10%;
-  left: 12%;
+  bottom: 5%;
+  right: 5%;
   animation: fadeIn ease 8s;
 }
 
@@ -392,8 +392,8 @@ p , h1{
   width: 85%;
   object-fit: contain;
   position: absolute;
-  bottom: 10%;
-  left: 12%;
+  bottom: 5%;
+  right: 5%;
   animation: fadeIn ease 8s;
 }
 
