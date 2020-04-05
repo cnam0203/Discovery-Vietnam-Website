@@ -10,48 +10,56 @@ export default class SearchRecipe extends Component {
         super(props);
         this.state = {
             listRecipes: [{
+                id: 1234,
                 url: '/pho-br.jpg',
                 name: 'PHỞ',
                 likes: 12,
                 level: 'Difficult',
                 time: '1h30min'
             }, {
+                id: 1234,
                 url: '/caolau.jpg',
                 name: 'Cao lầu',
                 likes: 12,
                 level: 'Easy',
                 time: '1h15min'
             }, {
+                id: 1234,
                 url: '/com-ga.png',
                 name: 'CƠM GÀ',
                 likes: 12,
                 level: 'Easy',
                 time: '1h'
             }, {
+                id: 1234,
                 url: '/banhmi.jpg',
                 name: 'Bánh mì',
                 likes: 12,
                 level: 'Easy',
                 time: '45min'
             }, {
+                id: 1234,
                 url: '/pho-br.jpg',
                 name: 'BANH MI',
                 likes: 12,
                 level: 'Easy',
                 time: '12s'
             }, {
+                id: 1234,
                 url: '/pho-br.jpg',
                 name: 'BANH MI',
                 likes: 12,
                 level: 'Easy',
                 time: '12s'
             }, {
+                id: 1234,
                 url: '/pho-br.jpg',
                 name: 'BANH MI',
                 likes: 12,
                 level: 'Easy',
                 time: '12s'
             }, {
+                id: 1234,
                 url: '/pho-br.jpg',
                 name: 'BANH MI sdfadsfdsfd',
                 likes: 12,
@@ -75,8 +83,8 @@ export default class SearchRecipe extends Component {
 
     render() {
         return (
-            <div id="search-recipe-container">
-                <div id='search-recipe-header'>
+            <div className="search-recipe-container">
+                <div className='search-recipe-header'>
                     <Logo />
                     <Navigator />
                     <SearchBar />
@@ -86,17 +94,17 @@ export default class SearchRecipe extends Component {
                     {
                         this.state.listRecipes.map((item, index) => {
                             return (
-                                <div className="recipes" key={index}>
-                                    <img src={item.url} className="img-recipe"/>
-                                    <div className="name">{item.name}</div>
+                                <div className="recipes-search" key={index} onClick={() => { window.location.href = '/cuisine/recipe/' + (item.id).toString()}}>
+                                    <img src={item.url} className="img-recipe-search"/>
+                                    <div className="name-search">{item.name}</div>
                                     <div className="footer">
-                                        <div className="likes">
+                                        <div className="likes-search">
                                             <i className="fa fa-heart icon"></i>
                                             {item.likes}</div>
-                                        <div className="level">
+                                        <div className="level-search">
                                             <i className="fa fa-apple icon"></i>
                                             {item.level}</div>
-                                        <div className="time">
+                                        <div className="time-search">
                                             <i className="fa fa-clock-o icon"></i>
                                             {item.time}</div>
                                     </div>

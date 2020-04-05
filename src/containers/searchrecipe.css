@@ -1,11 +1,11 @@
-#search-recipe-container {
+.search-recipe-container {
     width: 100%;
     height: 100%;
     color: white;
     font-family: "Trebuchet MS", Helvetica, sans-serif
 }
 
-#search-recipe-header {
+.search-recipe-header {
     width: 100%;
     height: 25%;
     position: relative;
@@ -31,9 +31,10 @@
     justify-content: space-between;
     background: #f0f0f0;
     overflow: hidden;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
-.recipes {
+.recipes-search {
     box-sizing: border-box;
     width: 200px;
     height: 450px;
@@ -43,13 +44,13 @@
     transition: transform ease-in 1s;
 }
 
-.img-recipe {
+.img-recipe-search {
     width: 100%;
     height: 60%;
     object-fit: cover;
 }
 
-.name {
+.name-search {
     box-sizing: border-box;
     width: 100%;
     height: 15%;
@@ -73,7 +74,7 @@
     margin-right: 3px;
 }
 
-.likes, .level, .time {
+.likes-search, .level-search, .time-search {
     position: relative;
     float: left;
     margin-right: 8px;
@@ -97,15 +98,15 @@
     font-family: reross-quadratic, sans-serif;
 }
 
-.recipes:hover .share {
+.recipes-search:hover .share {
     animation: goUp 2s forwards;
 }
 
-.recipes:hover .name, .recipes:hover .icon {
+.recipes-search:hover .name-search, .recipes-search:hover .icon {
     color: #fa91f3;
 }
 
-.recipes:hover {
+.recipes-search:hover {
     transform: scale(1.1);
     cursor: pointer;
 }

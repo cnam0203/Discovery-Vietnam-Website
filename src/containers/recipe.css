@@ -1,0 +1,216 @@
+* {
+    box-sizing: border-box;
+}
+
+.recipe-container {
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-family: "Trebuchet MS", Helvetica, sans-serif
+}
+
+.recipe-header {
+    width: 100%;
+    height: 25%;
+    position: relative;
+    background-image: url('../../asset/pho-br.jpg');
+    background-size: cover;
+}
+
+.recipe {
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    padding: 5% 25%;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.name-recipe {
+    color: black;
+    width: 100%;
+    text-align: center;
+    font-size: 42px;
+    font-weight: 400;
+    font-style: normal;
+    font-family: bungee, sans-serif;
+    margin: 0;
+}
+
+.img-recipe {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.left-col {
+    width: 40%;
+    display: block;
+    float: left;
+    padding-right: 15px;
+    margin-top: 30px;
+}
+
+.descript {
+    width: 100%;
+    margin-bottom: 60px;
+    font-weight: 200;
+}
+.time {
+    width: 50%;
+    float: left;
+    padding: 10px 0;
+    border-right: 1px dotted black;
+    border-bottom: 1px dashed black;
+    text-align: left;
+    font-size: 13px;
+    margin: 0;
+    color: #fa91f3;
+}
+.level {
+    width: 50%;
+    float: left;
+    padding: 10px 0;
+    border-bottom: 1px dashed black;
+    text-align: right;
+    font-size: 13px;
+    margin: 0;
+    color: #fa91f3;
+}
+
+.serve {
+    width: 50%;
+    float: left;
+    padding: 10px 0;
+    border-right: 1px dotted black;
+    text-align: left;
+    font-size: 13px;
+    margin: 0;
+    color: #fa91f3;
+}
+
+.like {
+    color: #fa91f3;
+    width: 50%;
+    float: left;
+    padding: 10px 0;
+    text-align: right;
+    font-size: 13px;
+    margin: 0;
+}
+
+.property {
+    color: black;
+}
+
+.ingredients {
+    margin-top: 120px;
+    width: 100%;
+}
+
+.ingredient-title {
+    font-size: 26px;
+    color: black;
+    border-bottom: 2px solid black;
+    font-weight: 400;
+    font-family: bungee, sans-serif;
+}
+
+.direction-title {
+    font-size: 26px;
+    color: black;
+    border-bottom: 2px solid black;
+    font-weight: 400;
+    margin-top: 0;
+    font-family: bungee, sans-serif;
+}
+
+.list-recipe {
+    width: 100%;
+    padding: 0px 10px;   
+}
+
+.parts {
+    width: 100%;
+}
+
+.part-name {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: black;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: bungee, sans-serif;
+}
+
+.ingredient {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    border-bottom: 1px dashed black;
+    padding: 10px 0px;
+}
+
+.amount {
+    justify-content: center;
+    width: 25%;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    float: left;
+}
+
+.unit {
+    width: 25%;
+    text-align: left;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    float: left;
+}
+
+.ingredient-name {
+    width: 50%;
+    text-align: left;
+    font-size: 16px;
+    color: #fa91f3;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    float: left;
+}
+
+.right-col {
+    width: 60%;
+    display: block;
+    float: left;
+    padding-left: 15px;
+    margin-top: 30px;
+}
+
+.content-recipe {
+    width: 100%;
+    font-size: 16px;
+    color: black;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.img-step {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.description-img {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: 13px;
+    margin-top: 2px;
+    color: black;
+}
