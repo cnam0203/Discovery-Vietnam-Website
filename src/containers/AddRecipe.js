@@ -643,6 +643,8 @@ export default class AddRecipe extends Component {
                     <Navigator />
                     <SearchBar />
                     <p id="add-recipe-title">INNOVATE YUMMY RECIPES</p>
+                    <i className="fa fa-upload"  id="add-recipe" style={{position: 'absolute', right: '5%', bottom: '5%'}}
+                        onClick={() =>{alert("Your recipe uploaded successfully")}}><b id="add-recipe-text" style={{marginLeft: 5}}>Upload recipe</b></i>
                 </div>
                 <div id="add-recipe-content">
                     <div id="add-recipe-center">
