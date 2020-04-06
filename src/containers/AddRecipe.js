@@ -285,7 +285,7 @@ class DirectionInput extends Component {
             return (
                 <div className="insert">
                     <div className="input-content">
-                        <input type="text" className="content" value={content} onChange={(e) => this.setState({content: e.target.value})} placeholder="Add new step ..."></input>
+                        <input type="text" className="content-add" value={content} onChange={(e) => this.setState({content: e.target.value})} placeholder="Add new step ..."></input>
                         <i className="fa fa-check check" onClick={() => {this.updateContent()}}></i>
                         <i className="fa fa-times remove" onClick={() => {this.removeContent()}}></i>
                     </div>
@@ -302,7 +302,7 @@ class DirectionInput extends Component {
                         }
                         <input type="file" name="file" id={inputId} onChange={(e) => this.addImage(e)} style={{display: 'none'}}></input>
                         <div className="input-content">
-                            <input type="text" className="content dir-title" value={title} onChange={(e) => this.setState({title: e.target.value})} placeholder="Comment your image..."></input>
+                            <input type="text" className="content-add dir-title" value={title} onChange={(e) => this.setState({title: e.target.value})} placeholder="Comment your image..."></input>
                             <i className="fa fa-upload edit" onClick={() => {this.clickImage()}}></i>
                             <i className="fa fa-check delete" onClick={() => {this.updateImage()}}></i>
                             <i className="fa fa-times edit" onClick={() => {this.removeImage()}}></i>
@@ -387,7 +387,7 @@ class DirectionItem extends Component {
             if (kind == 0) {
                 return (
                     <div className="input-content border-content">
-                        <p className="content not-input">{content}</p>
+                        <p className="content-add not-input">{content}</p>
                         <i className="fa fa-pencil edit" onClick={() => {this.addInputContent()}}></i>
                         <i className="fa fa-times delete" onClick={() => {this.removeContent()}}></i>
                     </div>
@@ -415,7 +415,7 @@ class DirectionItem extends Component {
             if (kind == 0) {
                 return (
                     <div className="input-content border-content">
-                        <input type="text" value={content} className="content" onChange={(e) => this.setState({content: e.target.value})}></input>
+                        <input type="text" value={content} className="content-add" onChange={(e) => this.setState({content: e.target.value})}></input>
                         <i className="fa fa-check check" onClick={() => {this.updateContent()}}></i>
                         <i className="fa fa-times remove" onClick={() => {this.removeContent()}}></i>
                     </div>
@@ -431,7 +431,7 @@ class DirectionItem extends Component {
                         }
                         <input type="file" name="file" id={inputId} onChange={(e) => this.addImage(e)} style={{display: 'none'}}></input>
                         <div className="input-content">
-                            <input type="text" className="content dir-title" value={title} onChange={(e) => this.setState({title: e.target.value})}></input>
+                            <input type="text" className="content-add dir-title" value={title} onChange={(e) => this.setState({title: e.target.value})}></input>
                             <i className="fa fa-upload edit" onClick={() => {this.clickImage()}}></i>
                             <i className="fa fa-check delete" onClick={() => {this.updateImage()}}></i>
                             <i className="fa fa-times edit" onClick={() => {this.removeImage()}}></i>
