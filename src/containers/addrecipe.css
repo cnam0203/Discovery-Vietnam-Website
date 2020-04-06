@@ -8,12 +8,418 @@
     color: white;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     color: black;
+    margin-bottom: 30%;
 }
 
 #add-recipe-header {
     width: 100%;
-    height: 25%;
+    height: 30%;
     position: relative;
     background-image: url('../../asset/pho-br.jpg');
     background-size: cover;
+}
+
+#add-recipe-title {
+    position: absolute;
+    bottom: 15px;
+    left: 30%;
+    color: white;
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0;
+}
+
+#add-recipe-title:hover {
+    color: #fa91f3;
+    text-shadow: 3px 3px 6px black;
+}
+
+#add-recipe-content {
+    display: block;
+    width: 100%;
+    padding: 5% 20%;
+}
+
+#add-recipe-center {
+    display: block;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+}
+
+#add-recipe-name{
+    line-height: 0px;
+    padding: 0px 10px;
+    width: 70%;
+    margin: 0 15%;
+    border: 0px;
+    border: 2px solid black;
+    font-size: 42px;
+    text-align: center;
+    font-family: bungee, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#add-recipe-name:focus {
+    outline-width: 0;
+}
+
+.input-image-img {
+    margin: 10px 0;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+#add-recipe-btn {
+    width: 140px;
+    padding: 10px;
+    margin: 15px auto;
+    background-color: black;
+    font-size: 13px;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#add-recipe-btn-big {
+    width: 180px;
+    padding: 10px;
+    margin: 0px auto;
+    background-color: black;
+    font-size: 13px;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+#add-recipe-btn:hover, #add-recipe-btn-big:hover {
+    cursor: pointer;;
+}
+
+.upload {
+    margin-right: 5px;
+}
+
+#add-recipe-left-col {
+    width: 40%;
+    display: block;
+    float: left;
+    padding-right: 15px;
+    margin-top: 30px;
+}
+
+#info-container {
+    width: 100%;
+}
+
+#add-recipe-info {
+    width: 100%;
+    font-weight: 200;
+    border: 1px solid black;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.add-recipe-time {
+    width: 50%;
+    float: left;
+    padding: 10px 5px;
+    border-right: 1px dotted black;
+    border-bottom: 1px dashed black;
+    text-align: left;
+    font-size: 16px;
+    margin: 0;
+    color: black;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    display: flex;
+    font-weight: bold;
+    overflow: hidden;
+}
+.add-recipe-level {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    width: 50%;
+    float: left;
+    padding: 10px 5px;
+    border-bottom: 1px dashed black;
+    text-align: right;
+    font-size: 16px;
+    margin: 0;
+    color: black;
+    display: flex;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.add-recipe-serve {
+    width: 100%;
+    float: left;
+    padding: 10px 5px;
+    text-align: left;
+    font-size: 16px;
+    margin: 0;
+    color: black;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    display: flex;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+#add-recipe-time-input, #add-recipe-level-input, #add-recipe-serve-input {
+    width: 80px;
+    color: #fa91f3;
+    border: 0;
+    margin-left: 5px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0;
+}
+
+input:focus {
+    outline-width: 0;
+}
+
+.add-recipe-ingredients {
+    margin-top: 30px;
+    width: 100%;
+}
+
+#add-recipe-ingredients-title {
+    font-size: 26px;
+    color: black;
+    border-bottom: 2px solid black;
+    font-weight: 400;
+    font-family: bungee, sans-serif;
+}
+
+.add-recipe-ingredient-item {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed black;
+    padding: 10px 0px;
+    padding-top: 0px;
+}
+
+.new {
+    border-bottom: 0;
+    margin-bottom: 20px;
+}
+
+.ingre-container {
+    box-sizing: border-box;
+    padding: 10px 5px;
+    margin-bottom: 30px;
+    border: 1px solid black;
+}
+
+.add-recipe-amount {
+    justify-content: center;
+    width: 18%;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    float: left;
+    overflow: hidden;
+  text-overflow: clip; 
+  margin-right: 5px;
+}
+
+.add-recipe-unit {
+    width: 18%;
+    text-align: left;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    float: left;
+    overflow: hidden;
+  text-overflow: clip; 
+  margin-right: 5px;
+}
+
+
+.add-recipe-ingre-name {
+    width: 44%;
+    text-align: left;
+    font-size: 16px;
+    color: #fa91f3;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    float: left;
+    overflow: hidden;
+  text-overflow: clip; 
+  margin-right: 5px;
+}
+
+.input{
+    margin-right: 5px;
+    border: 0;
+    border-bottom: 1px solid black
+}
+
+.edit, .remove {
+    width: 10%;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+}
+
+.delete, .check {
+    width: 10%;
+    text-align: center;
+    font-size: 16px;
+    color: #fa91f3;
+}
+
+.new-title {
+    width: 100%;
+    font-size: 16;
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.edit:hover, .remove:hover, .delete:hover, .check:hover {
+    cursor: pointer;
+}
+
+.add-recipe-part {
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding-top: 10px;
+    margin-bottom: 30px;
+}
+
+.add-recipe-part-info {
+    width: 100%;
+    display: flex;
+}
+
+.add-recipe-part-name {
+    width: 80%;
+    color: black;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: bungee, sans-serif;
+    margin: 0;
+    margin-bottom: 10px;
+    overflow: hidden;
+  text-overflow: clip; 
+}
+
+.part {
+    font-size: 20px;
+}
+
+#add-recipe-right-col {
+    width: 60%;
+    display: block;
+    float: left;
+    padding-left: 15px;
+    margin-top: 30px;
+}
+
+.add-recipe-direction {
+    width: 100%;
+    display: flex;
+}
+
+.dir-btn {
+    width: 50%;
+    float: left;
+}
+
+.direction-title {
+    font-size: 26px;
+    color: black;
+    border-bottom: 2px solid black;
+    font-weight: 400;
+    margin-top: 0;
+    font-family: bungee, sans-serif;
+}
+
+.input-content {
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.content {
+    width: 80%;
+    border: 0;
+    border-bottom: 1px solid black;
+    color: black;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0;
+    overflow-wrap: break-word;
+}
+
+.dir-title {
+    width: 70%;
+}
+
+.not-input {
+    border: 0;
+    margin: 0;
+}
+
+.border-content {
+    padding: 5px 20px;
+    border: 1px solid black;
+}
+
+
+.insert {
+    width: '100%';
+    padding: 10px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.insert-title {
+    width: 100%;
+    color: black;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+.input-image {
+    width: 100%;
+}
+
+.input-image-img {
+    width: 100%;
+    height: 300px;
+}
+
+.edit-img {
+    width: 100%;
+    display: flex;
+}
+
+.info-title {
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 13px;
 }

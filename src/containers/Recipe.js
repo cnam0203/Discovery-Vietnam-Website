@@ -160,6 +160,8 @@ export default class Recipe extends Component {
                     <Logo />
                     <Navigator />
                     <SearchBar />
+                    <i className="fa fa-pencil"  id="add-recipe" style={{position: 'absolute', right: '5%', bottom: '5%'}}
+                        onClick={() =>{ window.location.href = '/cuisine/addrecipe'}}><b id="add-recipe-text">Add a recipe</b></i>
                 </div>
                 <div className="recipe">
                     <p className="name-recipe">{recipe.name}</p>
@@ -214,8 +216,8 @@ export default class Recipe extends Component {
                                 } else  {
                                     return (
                                         <div key={index} style={{width: '100%'}}>
-                                            <img src={item.content} className="img-step"/>
-                                            <p className="description-img">{item.content}</p>
+                                            <img src={item.img} className="img-step"/>
+                                            <p className="description-img">{item.title}</p>
                                         </div>
                                     )
                                 }
