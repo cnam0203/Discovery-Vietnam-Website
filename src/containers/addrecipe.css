@@ -49,16 +49,15 @@
 }
 
 #add-recipe-name{
-    line-height: 0px;
-    padding: 0px 10px;
+    padding: 10px;
     width: 70%;
     margin: 0 15%;
     border: 0px;
     border: 2px solid black;
     font-size: 42px;
     text-align: center;
-    font-family: bungee, sans-serif;
-    font-weight: 400;
+    font-family: 'Bungee', cursive;
+    font-weight: bold;
     font-style: normal;
 }
 
@@ -143,7 +142,7 @@
     font-weight: bold;
     overflow: hidden;
 }
-.add-recipe-level {
+.add-recipe-serve {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     width: 50%;
     float: left;
@@ -158,16 +157,14 @@
     overflow: hidden;
 }
 
-.add-recipe-serve {
+.add-recipe-level {
     width: 100%;
-    float: left;
     padding: 10px 5px;
     text-align: left;
     font-size: 16px;
     margin: 0;
     color: black;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
-    display: flex;
     font-weight: bold;
     overflow: hidden;
 }
@@ -196,8 +193,8 @@ input:focus {
     font-size: 26px;
     color: black;
     border-bottom: 2px solid black;
-    font-weight: 400;
-    font-family: bungee, sans-serif;
+    font-weight: bold;
+    font-family: 'Bungee', cursive;
 }
 
 .add-recipe-ingredient-item {
@@ -314,12 +311,12 @@ input:focus {
     width: 80%;
     color: black;
     font-size: 20px;
-    font-weight: 400;
-    font-family: bungee, sans-serif;
+    font-weight: bold;
+    font-family: 'Bungee', cursive;
     margin: 0;
     margin-bottom: 10px;
     overflow: hidden;
-  text-overflow: clip; 
+    text-overflow: clip; 
 }
 
 .part {
@@ -348,9 +345,9 @@ input:focus {
     font-size: 26px;
     color: black;
     border-bottom: 2px solid black;
-    font-weight: 400;
+    font-weight: bold;
     margin-top: 0;
-    font-family: bungee, sans-serif;
+    font-family: 'Bungee', cursive;
 }
 
 .input-content {
@@ -423,4 +420,26 @@ input:focus {
     color: black;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: 13px;
+}
+
+#select-div {
+    font-weight: bold;
+    padding: 5px;
+    margin-left: 5px;
+    color: #fa91f3;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 13px;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+#select-div:focus {
+    outline: none;
+}
+
+.inner {
+    display: inline-block;
+  vertical-align: middle;
 }

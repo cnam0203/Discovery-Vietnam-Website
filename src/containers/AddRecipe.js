@@ -183,8 +183,8 @@ class PartItem extends Component {
                         </div>
                     ) : (
                         <div className="add-recipe-ingredient-item new">
-                            <input type="number" min="0" placeholder="Ex:1" className="add-recipe-amount input" value={this.state.amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
-                            <input type="text" placeholder="Ex:kg" className="add-recipe-unit input" value={this.state.unit} onChange={(e) => {this.setState({unit: e.target.value})}}></input>
+                            <input type="number" min="0" placeholder="Ex: 1" className="add-recipe-amount input" value={this.state.amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
+                            <input type="text" placeholder="Ex: kg" className="add-recipe-unit input" value={this.state.unit} onChange={(e) => {this.setState({unit: e.target.value})}}></input>
                             <input type="text" placeholder="Ex: pork" className="add-recipe-ingre-name input" value={this.state.nameIngre} onChange={(e) => {this.setState({nameIngre: e.target.value})}}></input>
                             <i className="fa fa-check check" onClick={() => {this.addInput()}}></i>
                             <i className="fa fa-times remove" onClick={() => {this.removeInput()}}></i>
@@ -222,7 +222,7 @@ class DirectionInput extends Component {
         console.log(e.target.files[0])
         if (e.target.files[0] != 'undefined') {
             this.setState({img: e.target.files[0]})
-            this.setState({idx: 2})
+            this.setState({idx: 3})
         }
     }
 
@@ -268,11 +268,18 @@ class DirectionInput extends Component {
         const inputId = 'img' + this.props.index.toString()
         if (idx == 0) {
             return (
+                <div style={{width: '100%', margin: '10px 0', textAlign: 'center'}}>
+                    <i className="fa fa-plus check" aria-hidden="true" onClick={() => {this.setState({idx: 1})}}></i>
+                </div>
+            )
+        }
+        else if (idx == 1) {
+            return (
                 <div className="insert">
-                    <p className="insert-title">Insert: </p>
+                    <i className="fa fa-times check" onClick={() => {this.removeContent()}}></i>
                     <div className="add-recipe-direction">
                         <div className="dir-btn">
-                            <div id="add-recipe-btn" onClick={() => this.setState({idx: 1})}>INSTRUCTION</div>
+                            <div id="add-recipe-btn" onClick={() => this.setState({idx: 2})}>INSTRUCTION</div>
                         </div>
                         <div className="dir-btn">
                             <div id="add-recipe-btn" onClick={() => this.clickImage()}>IMAGE</div>
@@ -281,7 +288,7 @@ class DirectionInput extends Component {
                     </div>
                 </div>
             )
-        } else if (idx == 1) {
+        } else if (idx == 2) {
             return (
                 <div className="insert">
                     <div className="input-content">
@@ -449,7 +456,7 @@ export default class AddRecipe extends Component {
         super(props);
         this.state = {
             name: '',
-            level: '',
+            level: 'easy',
             time: '',
             serves: '',
             img: null,
@@ -505,7 +512,7 @@ export default class AddRecipe extends Component {
 
     updateDirection(content, index) {
         const direction = {
-            ing: null,
+            img: null,
             title: null,
             content: content,
             kind: 0,
@@ -643,8 +650,8 @@ export default class AddRecipe extends Component {
                     <Navigator />
                     <SearchBar />
                     <p id="add-recipe-title">INNOVATE YUMMY RECIPES</p>
-                    <i className="fa fa-upload"  id="add-recipe" style={{position: 'absolute', right: '5%', bottom: '5%'}}
-                        onClick={() =>{alert("Your recipe uploaded successfully")}}><b id="add-recipe-text" style={{marginLeft: 5}}>Upload recipe</b></i>
+                    <i className="fa fa-upload"  id="add-recipe" style={{position: "absolute", bottom: '5%', right: '5%'}}
+                            onClick={() =>{alert("Your recipe uploaded successfully")}}><b id="add-recipe-text" style={{marginLeft: 5}}>Upload recipe</b></i>
                 </div>
                 <div id="add-recipe-content">
                     <div id="add-recipe-center">
@@ -669,13 +676,18 @@ export default class AddRecipe extends Component {
                                     TIME:
                                     <input type="text" value={this.state.time} placeholder="Ex: 30 mins" onChange={(e) => {this.setState({time: e.target.value})}} id="add-recipe-time-input"></input>
                                 </div>
-                                <div className="add-recipe-level">
-                                    LEVEL:
-                                    <input type="text" value={this.state.level} placeholder="Ex: Easy" onChange={(e) => {this.setState({level: e.target.value})}} id="add-recipe-level-input"></input>
-                                </div>
                                 <div className="add-recipe-serve">
                                     SERVES:
                                     <input type="number" step="1" min="1" value={this.state.serves} placeholder="Ex: 2" onChange={(e) => {this.setState({serves: e.target.value})}} id="add-recipe-serve-input"></input>
+                                </div>
+                                <div className="add-recipe-level">
+                                    <div className="inner" >LEVEL: </div>
+                                    <select className="inner" name="category" value={this.state.level} onChange={(e) => {this.setState({level: e.target.value})}} id="select-div">
+                                        <option value="easy">EASY</option>
+                                        <option value="medium">MEDIUM</option>
+                                        <option value="difficult">DIFFICULT</option>
+                                    </select>
+                                    {/* <input type="text" value={this.state.level} placeholder="Ex: Easy" onChange={(e) => {this.setState({level: e.target.value})}} id="add-recipe-level-input"></input> */}
                                 </div>
                             </div>
                         </div>
@@ -725,8 +737,8 @@ export default class AddRecipe extends Component {
                                         <div style={{width: '100%', display: 'block'}}>
                                             <div className="new-title">New ingredient: </div>
                                             <div className="add-recipe-ingredient-item new">
-                                                <input type="number" min="0" placeholder="Ex:1" className="add-recipe-amount input" value={this.state.amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
-                                                <input type="text" placeholder="Ex:kg" className="add-recipe-unit input" value={this.state.unit} onChange={(e) => {this.setState({unit: e.target.value})}}></input>
+                                                <input type="number" min="0" placeholder="Ex: 1" className="add-recipe-amount input" value={this.state.amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
+                                                <input type="text" placeholder="Ex: kg" className="add-recipe-unit input" value={this.state.unit} onChange={(e) => {this.setState({unit: e.target.value})}}></input>
                                                 <input type="text" placeholder="Ex: pork" className="add-recipe-ingre-name input" value={this.state.ingreName} onChange={(e) => {this.setState({ingreName: e.target.value})}}></input>
                                                 <i className="fa fa-check check" onClick={() => {this.addInput()}}></i>
                                                 <i className="fa fa-times remove" onClick={() => {this.removeInput()}}></i>
@@ -742,7 +754,7 @@ export default class AddRecipe extends Component {
                         </div>
                     </div>
                     <div id="add-recipe-right-col">
-                        <p className="direction-title">DIRECTIONS</p>
+                        <p className="direction-title">INSTRUCTION</p>
                         <DirectionInput updateImage={this.updateImage} updateDirection={this.updateDirection} index={0}/>
                         {
                             this.state.directions.map((item, index) => {
