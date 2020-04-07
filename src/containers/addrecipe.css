@@ -100,7 +100,8 @@
 
 
 #add-recipe-btn:hover, #add-recipe-btn-big:hover {
-    cursor: pointer;;
+    cursor: pointer;
+    background-color: #fa91f3;
 }
 
 .upload {

@@ -58,7 +58,7 @@ class IngredientItem extends Component {
         return this.state.editDisplay == true ?
             (
                 <div className="add-recipe-ingredient-item">
-                    <input type="text" placeholder="amount" className="add-recipe-amount input" value={amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
+                    <input type="number" min="0" placeholder="amount" className="add-recipe-amount input" value={amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
                     <input type="text" placeholder="unit" className="add-recipe-unit input" value={unit} onChange={(e) => {this.setState({unit: e.target.value})}}></input>
                     <input type="text" placeholder="name" className="add-recipe-ingre-name input" value={name} onChange={(e) => {this.setState({name: e.target.value})}}></input>
                     <i className="fa fa-check check" onClick={() => {this.edit()}}></i>
@@ -183,7 +183,7 @@ class PartItem extends Component {
                         </div>
                     ) : (
                         <div className="add-recipe-ingredient-item new">
-                            <input type="text" placeholder="Ex:1" className="add-recipe-amount input" value={this.state.amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
+                            <input type="number" min="0" placeholder="Ex:1" className="add-recipe-amount input" value={this.state.amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
                             <input type="text" placeholder="Ex:kg" className="add-recipe-unit input" value={this.state.unit} onChange={(e) => {this.setState({unit: e.target.value})}}></input>
                             <input type="text" placeholder="Ex: pork" className="add-recipe-ingre-name input" value={this.state.nameIngre} onChange={(e) => {this.setState({nameIngre: e.target.value})}}></input>
                             <i className="fa fa-check check" onClick={() => {this.addInput()}}></i>
@@ -667,15 +667,15 @@ export default class AddRecipe extends Component {
                             <div id="add-recipe-info">
                                 <div className="add-recipe-time">
                                     TIME:
-                                    <input type="text" value={this.state.time} placeholder="Time..." onChange={(e) => {this.setState({time: e.target.value})}} id="add-recipe-time-input"></input>
+                                    <input type="text" value={this.state.time} placeholder="Ex: 30 mins" onChange={(e) => {this.setState({time: e.target.value})}} id="add-recipe-time-input"></input>
                                 </div>
                                 <div className="add-recipe-level">
                                     LEVEL:
-                                    <input type="text" value={this.state.level} placeholder="Level..." onChange={(e) => {this.setState({level: e.target.value})}} id="add-recipe-level-input"></input>
+                                    <input type="text" value={this.state.level} placeholder="Ex: Easy" onChange={(e) => {this.setState({level: e.target.value})}} id="add-recipe-level-input"></input>
                                 </div>
                                 <div className="add-recipe-serve">
                                     SERVES:
-                                    <input type="text" value={this.state.serves} placeholder="Serves..." onChange={(e) => {this.setState({serves: e.target.value})}} id="add-recipe-serve-input"></input>
+                                    <input type="number" step="1" min="1" value={this.state.serves} placeholder="Ex: 2" onChange={(e) => {this.setState({serves: e.target.value})}} id="add-recipe-serve-input"></input>
                                 </div>
                             </div>
                         </div>
@@ -725,7 +725,7 @@ export default class AddRecipe extends Component {
                                         <div style={{width: '100%', display: 'block'}}>
                                             <div className="new-title">New ingredient: </div>
                                             <div className="add-recipe-ingredient-item new">
-                                                <input type="text" placeholder="Ex:1" className="add-recipe-amount input" value={this.state.amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
+                                                <input type="number" min="0" placeholder="Ex:1" className="add-recipe-amount input" value={this.state.amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
                                                 <input type="text" placeholder="Ex:kg" className="add-recipe-unit input" value={this.state.unit} onChange={(e) => {this.setState({unit: e.target.value})}}></input>
                                                 <input type="text" placeholder="Ex: pork" className="add-recipe-ingre-name input" value={this.state.ingreName} onChange={(e) => {this.setState({ingreName: e.target.value})}}></input>
                                                 <i className="fa fa-check check" onClick={() => {this.addInput()}}></i>
