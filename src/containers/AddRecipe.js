@@ -670,7 +670,9 @@ export default class AddRecipe extends Component {
                     </div>
                     <div id="add-recipe-left-col">
                         <div id="info-container">
-                            <p className="direction-title">INFORMATION</p>
+                            <p className="direction-title">{`INFORMATION `}
+                                <i className="fa fa-info-circle" aria-hidden="true"></i>
+                            </p>
                             <div id="add-recipe-info">
                                 <div className="add-recipe-time">
                                     TIME:
@@ -692,7 +694,9 @@ export default class AddRecipe extends Component {
                             </div>
                         </div>
                         <div className="add-recipe-ingredients">
-                            <p id="add-recipe-ingredients-title">INGREDIENTS</p>
+                            <p id="add-recipe-ingredients-title">{`INGREDIENTS `}
+                                <i className="fa fa-apple" aria-hidden="true"></i>
+                            </p>
                             <div style={{width:'100%'}} className="ingre-container">
                                 {
                                     this.state.parts.map((item, index) => {
@@ -754,7 +758,9 @@ export default class AddRecipe extends Component {
                         </div>
                     </div>
                     <div id="add-recipe-right-col">
-                        <p className="direction-title">INSTRUCTION</p>
+                        <p className="direction-title">{`INSTRUCTION `}
+                            <i className="fa fa-cutlery" aria-hidden="true"></i>
+                        </p>
                         <DirectionInput updateImage={this.updateImage} updateDirection={this.updateDirection} index={0}/>
                         {
                             this.state.directions.map((item, index) => {
