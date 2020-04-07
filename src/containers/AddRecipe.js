@@ -203,7 +203,7 @@ class DirectionInput extends Component {
             img: null,
             content: '',
             title: '',
-            idx: 0
+            idx: 0, 
         }
         this.updateContent = this.updateContent.bind(this)
         this.removeContent = this.removeContent.bind(this)
@@ -214,7 +214,7 @@ class DirectionInput extends Component {
     }
 
     clickImage() {
-        const inputId = '#img' + this.props.index.toString()
+        const inputId = '#img' + this.props.index.toString() + this.props.time
         $(inputId).click();
     }
 
@@ -263,9 +263,8 @@ class DirectionInput extends Component {
 
    
     render() {
-        
         const { idx, content , img, title} = this.state
-        const inputId = 'img' + this.props.index.toString()
+        const inputId = 'img' + this.props.index.toString() + this.props.time
         if (idx == 0) {
             return (
                 <div style={{width: '100%', margin: '10px 0', textAlign: 'center'}}>
@@ -331,7 +330,7 @@ class DirectionItem extends Component {
             img: this.props.img,
             title: this.props.title,
             content: this.props.content,
-            kind: this.props.kind
+            kind: this.props.kind, 
         }
         this.addInputContent = this.addInputContent.bind(this)
         this.removeContent = this.removeContent.bind(this)
@@ -382,7 +381,7 @@ class DirectionItem extends Component {
     }
 
     clickImage() {
-        const inputId = '#img2' + this.props.index
+        const inputId = '#img2' + this.props.index + this.props.time
         $(inputId).click();
     }
 
@@ -428,7 +427,7 @@ class DirectionItem extends Component {
                     </div>
                 )
             } else {
-                const inputId = 'img2' + this.props.index
+                const inputId = 'img2' + this.props.index + this.props.time
                 return (
                     <div className="insert">
                         {
@@ -503,7 +502,7 @@ export default class AddRecipe extends Component {
             title: title,
             content: null,
             kind: 1,
-            id: this.state.directions.length == 0 ? 0 : this.state.directions[this.state.directions.length - 1].id + 1
+            id: Date.now()
         }
         const newDirections  =this.state.directions
         newDirections.splice(index/2, 0, direction)
@@ -516,7 +515,7 @@ export default class AddRecipe extends Component {
             title: null,
             content: content,
             kind: 0,
-            id: this.state.directions.length == 0 ? 0 : this.state.directions[this.state.directions.length - 1].id + 1
+            id: Date.now()
         }
 
         const newDirections  =this.state.directions
@@ -761,12 +760,13 @@ export default class AddRecipe extends Component {
                         <p className="direction-title">{`INSTRUCTION `}
                             <i className="fa fa-cutlery" aria-hidden="true"></i>
                         </p>
-                        <DirectionInput updateImage={this.updateImage} updateDirection={this.updateDirection} index={0}/>
+                        <DirectionInput updateImage={this.updateImage} updateDirection={this.updateDirection} index={0} time={Date.now()}/>
                         {
                             this.state.directions.map((item, index) => {
                                 return (
                                 <div key={item.id}>
                                     <DirectionItem img={item.img} 
+                                                time={Date.now()}
                                                 index={index*2+1}
                                                 content={item.content} 
                                                 title={item.title} 
@@ -776,6 +776,7 @@ export default class AddRecipe extends Component {
                                                 removeContent={this.removeContent}
                                                 removeImg={this.removeImg} />
                                     <DirectionInput index={index*2+2}
+                                                time={Date.now()}
                                                 updateImage={this.updateImage}
                                                 updateDirection={this.updateDirection} />
                                 </div>
