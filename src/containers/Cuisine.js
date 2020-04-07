@@ -119,8 +119,8 @@ export default class Cuisine extends Component {
                     <Logo />
                     <SearchBar />
                     <p className='region' id='north' style={{position: 'absolute', left: '28%', top: '40%'}}>North</p>
-                    <p className='region' id='center' style={{position: 'absolute', left: '43%', top: '40%'}}>Center</p>
-                    <p className='region' id='south' style={{position: 'absolute', left: '60%', top: '40%'}}>South</p>
+                    <p className='region' id='center' style={{position: 'absolute', left: '43%', top: '50%'}}>Center</p>
+                    <p className='region' id='south' style={{position: 'absolute', left: '60%', top: '60%'}}>South</p>
                     <i className="fa fa-pencil"  id="add-recipe"style={{position: 'absolute', right: '5%', bottom: '5%'}}
                         onClick={() =>{ window.location.href = '/cuisine/addrecipe'}}><b id="add-recipe-text">Add a recipe</b></i>
                 </div>

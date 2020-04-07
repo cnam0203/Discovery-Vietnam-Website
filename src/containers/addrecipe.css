@@ -13,7 +13,7 @@
 
 #add-recipe-header {
     width: 100%;
-    height: 30%;
+    height: 40%;
     position: relative;
     background-image: url('../../asset/pho-br.jpg');
     background-size: cover;
@@ -21,8 +21,9 @@
 
 #add-recipe-title {
     position: absolute;
-    bottom: 15px;
-    left: 30%;
+    bottom: 10%;
+    width: 100%;
+    text-align: center;
     color: white;
     font-size: 42px;
     font-weight: bold;
