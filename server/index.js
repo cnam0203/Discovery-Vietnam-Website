@@ -2,6 +2,13 @@ const express = require('express');
 var app = express();
 var path = require('path')
 var fs = require('fs')
+var mongo = require('mongodb');
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+var ObjectId = require('mongodb').ObjectID;
+
+
 
 
 var cookieParser = require('cookie-parser');
@@ -11,15 +18,13 @@ var storage = multer.diskStorage({
         callback(null, '../uploads');
     },
     filename: function(req, file, callback) {
-        console.log(file.originalname);
-        var path = req.url.split('/');
-        var extension = file.originalname.split('.');
-        var fileName = path[path.length - 1] + "." + extension[extension.length - 1];
+        console.log(file.originalname)
+        var fileName = file.originalname
         callback(null, fileName);
     }
 })
 
-var upload = multer({storage:storage}).single('myfile');
+var upload = multer({storage:storage}).array('image')
 
 
 
@@ -46,6 +51,71 @@ app.get('/getRandomImage/:id', (req, res) => {
     var link = '../uploads/' + index[index.length - 1] + '.jpg';
     console.log(link)
     res.sendFile(path.join(__dirname, link))
+})
+
+app.post('/uploadNewRecipe', function(req, res) {
+    upload(req, res, function(err) {
+        if(err) {
+            res.end('Error')
+        } else {
+            MongoClient.connect(url, function(err, db) {
+                if (err) res.end(err)
+                console.log('Connect OK')
+                var dbo = db.db("mydb");
+                var collection = dbo.collection('recipe');
+                console.log("Create ok")
+                var recipe = {user_id: 1, recipe: JSON.parse(req.body.recipe)}
+                collection.insert([recipe], function (err, result) {
+                    if (err) {
+                      console.log(err)
+                    } else {
+                      console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+                    }
+                    db.close();
+                });
+              });
+            res.end('OK')
+        }
+    });
+})
+
+app.get('/getRecipes', function(req, res) {
+    MongoClient.connect(url, function(err, db) {
+        if (err) res.end(err)
+        console.log('Connect OK')
+        var dbo = db.db("mydb");
+        var collection = dbo.collection('recipe');
+        collection.find().toArray(function (err, result) {
+            if (err) {
+              console.log(err);
+            } 
+            db.close();
+            console.log(result.length)
+            res.send({recipes: result})
+          });
+      });
+})
+
+app.get('/getRecipeInfo/:id', function(req, res) {
+    console.log('getRecipeInfo')
+    const path = req.url.split('/')
+    const index = path[path.length-1]
+    console.log(index)
+    MongoClient.connect(url, function(err, db) {
+        if (err) res.end(err)
+        console.log('Connect OK')
+        var dbo = db.db("mydb");
+        var collection = dbo.collection('recipe');
+        collection.find({_id: ObjectId(index)}).toArray(function (err, result) {
+            if (err) {
+                console('wrong')
+              console.log(err);
+            } 
+            db.close();
+            console.log(result.length)
+            res.send({recipe: result[0].recipe})
+          });
+      });
 })
 
 app.post('/upload/url', function(req, res) {
@@ -77,7 +147,7 @@ app.post('/upload/:id', function(req, res) {
         if(err) {
             return res.end('Err')
         } else {
-            res.end('File is uploaded successfully');
+            console.log(req.body)
         }
     })
 })

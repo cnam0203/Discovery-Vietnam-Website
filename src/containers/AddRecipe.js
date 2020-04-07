@@ -468,7 +468,7 @@ export default class AddRecipe extends Component {
             unit: '', 
             editIngre: false,
             editPart: false,
-            directions: []
+            directions: [],
         }
         this.remove = this.remove.bind(this)
         this.edit = this.edit.bind(this)
@@ -490,6 +490,56 @@ export default class AddRecipe extends Component {
         this.editImage = this.editImage.bind(this)
         this.removeImg = this.removeImg.bind(this)
         this.removeContent = this.removeContent.bind(this)
+        this.uploadRecipe = this.uploadRecipe.bind(this)
+    }
+
+    uploadRecipe() {
+        const { directions, name, img, time, level, serves, ingredients, parts } = this.state;
+        const date = Date.now()
+        var form = new FormData();
+        form.append('image', img, date + '-' + img.name);
+        for (var index = 0; index < directions.length; index++) {
+            if (directions[index].kind === 1) {
+                form.append('image', directions[index].img, date + '-' + directions[index].img.name)
+            }
+        }
+        const imgUrl = date + '-' + img.name;
+        const instructions = [];
+        for (var index = 0; index < directions.length; index++) {
+            if (directions[index].kind == 1) {
+                const { content, img, kind, title, id} = directions[index]
+                const newInstruction = {
+                    content: content,
+                    img: date + '-' + img.name,
+                    title: title,
+                    id: id,
+                    kind: kind
+                }
+                instructions.push(newInstruction)
+            } else {
+                instructions.push(directions[index])
+            }
+        }
+        const recipe = {
+            name: name, 
+            time: time,
+            level: level,
+            serves: serves,
+            ingredients: ingredients,
+            parts: parts,
+            imgUrl: imgUrl,
+            directions: instructions
+        }
+        form.append('recipe', JSON.stringify(recipe));
+        fetch('/uploadNewRecipe', {
+            method: 'POST',
+            body: form
+        })
+        .then(response => response.text())
+        .then((response) => {
+            console.log(response)
+        })
+        .catch(err => console.log(err))
     }
 
     uploadImage(e) {
@@ -650,7 +700,7 @@ export default class AddRecipe extends Component {
                     <SearchBar />
                     <p id="add-recipe-title">INNOVATE YUMMY RECIPES</p>
                     <i className="fa fa-upload"  id="add-recipe" style={{position: "absolute", bottom: '5%', right: '5%'}}
-                            onClick={() =>{alert("Your recipe uploaded successfully")}}><b id="add-recipe-text" style={{marginLeft: 5}}>Upload recipe</b></i>
+                            onClick={() =>{this.uploadRecipe()}}><b id="add-recipe-text" style={{marginLeft: 5}}>Upload recipe</b></i>
                 </div>
                 <div id="add-recipe-content">
                     <div id="add-recipe-center">
@@ -664,7 +714,10 @@ export default class AddRecipe extends Component {
                         }
                         <div id="add-recipe-btn" onClick={() => {$("#upload-image").click();}}>
                         <i className="fa fa-upload upload" aria-hidden="true"></i>
-                            UPLOAD IMAGE</div>
+                            {
+                                this.state.img != null ? 'EDIT IMAGE' : 'UPLOAD IMAGE'
+                            }
+                        </div>
                         <input type="file" name="file" id="upload-image" onChange={(e) => this.uploadImage(e)} style={{display: 'none'}}></input>
                     </div>
                     <div id="add-recipe-left-col">
