@@ -537,24 +537,24 @@ export default class AddRecipe extends Component {
         })
         .then(response => response.text())
         .then((response) => {
-            alert("Upload successfully !!!")
-            this.setState({
-                name: '',
-                level: 'easy',
-                time: '',
-                serves: '',
-                img: null,
-                addIngredient: false,
-                ingredients: [],
-                parts: [],
-                partName: '',
-                amount: '',
-                ingreName: '',
-                unit: '', 
-                editIngre: false,
-                editPart: false,
-                directions: [],
-            })
+            alert(response)
+            // this.setState({
+            //     name: '',
+            //     level: 'easy',
+            //     time: '',
+            //     serves: '',
+            //     img: null,
+            //     addIngredient: false,
+            //     ingredients: [],
+            //     parts: [],
+            //     partName: '',
+            //     amount: '',
+            //     ingreName: '',
+            //     unit: '', 
+            //     editIngre: false,
+            //     editPart: false,
+            //     directions: [],
+            // })
         })
         .catch(err => console.log(err))
     }
