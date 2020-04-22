@@ -3,454 +3,16 @@ import './addrecipe.css'
 import Navigator from '../components/Navigator'
 import Logo from '../components/Logo'
 import SearchBar from '../components/SearchBar'
+import SignIn from '../components/SignIn'
+import SignInModal from '../components/SignInModal'
+import { connect } from 'react-redux'
+import IngredientItem from '../components/IngredientItem'
+import PartItem from '../components/PartItem'
+import DirectionInput from '../components/DirectionInput'
+import DirectionItem from '../components/DirectionItem'
 
 
-class IngredientItem extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            editDisplay: false,
-            amount: this.props.recipe.amount,
-            unit: this.props.recipe.unit,
-            name: this.props.recipe.name
-        }
-        this.edit = this.edit.bind(this)
-        this.remove = this.remove.bind(this)
-        this.editDisplay = this.editDisplay.bind(this)
-    }
-
-    edit() {
-        this.setState({editDisplay : false})
-        if (this.props.kind == 0)
-            this.props.edit(this.props.idx, {
-                amount: this.state.amount,
-                unit: this.state.unit,
-                name: this.state.name
-            })
-        else {
-            this.props.edit(this.props.idx, {
-                amount: this.state.amount,
-                unit: this.state.unit,
-                name: this.state.name
-            }, this.props.partIdx)
-        }
-
-    }
-
-    editDisplay() {
-            this.setState({editDisplay: true})
-    }
-
-    remove() {
-        this.setState({editDisplay : false})
-        if (this.props.kind == 0) {
-            this.props.remove(this.props.idx)
-        }
-        else {
-            this.props.remove(this.props.idx, this.props.partIdx)
-        }
-    }
-
-    render() {
-
-        const { amount, unit, name } = this.state
-
-        return this.state.editDisplay == true ?
-            (
-                <div className="add-recipe-ingredient-item">
-                    <input type="number" min="0" placeholder="amount" className="add-recipe-amount input" value={amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
-                    <input type="text" placeholder="unit" className="add-recipe-unit input" value={unit} onChange={(e) => {this.setState({unit: e.target.value})}}></input>
-                    <input type="text" placeholder="name" className="add-recipe-ingre-name input" value={name} onChange={(e) => {this.setState({name: e.target.value})}}></input>
-                    <i className="fa fa-check check" onClick={() => {this.edit()}}></i>
-                    <i className="fa fa-times remove" onClick={() => {this.remove()}}></i>
-                </div>
-            )
-            :
-            (
-                <div className="add-recipe-ingredient-item">
-                    <div className="add-recipe-amount">{amount}</div>
-                    <div className="add-recipe-unit">{unit}</div>
-                    <div className="add-recipe-ingre-name">{name}</div>
-                    <i className="fa fa-pencil edit" onClick={() => {this.editDisplay()}}></i>
-                    <i className="fa fa-times delete" onClick={() => this.remove()}></i>
-                </div>
-            )
-    }
-}
-
-class PartItem extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: this.props.name,
-            ingredients: this.props.ingredients,
-            editDisplay: false,
-            editIngre: false,
-            nameIngre: '',
-            amount: '',
-            unit: ''
-        }
-        this.edit = this.edit.bind(this)
-        this.remove = this.remove.bind(this)
-        this.editDisplay = this.editDisplay.bind(this)
-        this.addIngre = this.addIngre.bind(this)
-        this.addInput = this.addInput.bind(this)
-        this.removeInput = this.removeInput.bind(this)
-        this.removeIngre = this.removeIngre.bind(this)
-    }
-
-    removeIngre(index, partIndex) {
-        this.props.removeIngrePart(index, partIndex)
-    }
-
-    addIngre() {
-            this.setState({editIngre: true})
-    }
-
-    addInput() {
-        this.setState({nameIngre: ''})
-        this.setState({unit: ''})
-        this.setState({amount: ''})
-        this.setState({editIngre: false})
-        this.props.addIngrePart(this.props.idx, {
-            name: this.state.nameIngre,
-            unit: this.state.unit,
-            amount: this.state.amount,
-        })
-    }
-
-    removeInput() {
-        this.setState({nameIngre: ''})
-        this.setState({unit: ''})
-        this.setState({amount: ''})
-        this.setState({editIngre: false})
-    }
-
-
-
-    editDisplay() {
-            this.setState({editDisplay: true});
-    }
-
-    edit() {
-        this.setState({editDisplay: false})
-        this.props.editPart(this.props.idx, this.state.name)
-    }
-
-    remove() {
-        this.setState({editDisplay: false})
-        this.props.removePart(this.props.idx)
-    }
-
-    render() {
-        const { name, ingredients, editDisplay, editIngre } = this.state
-
-        return (
-            <div className="add-recipe-part">
-                {
-                    editDisplay == true ? (
-                        <div className="add-recipe-part-info">
-                            <input type="text" placeholder="Part..." className="add-recipe-part-name" value={name} onChange={(e) => {this.setState({name: e.target.value})}}></input>
-                            <i className="fa fa-check check" onClick={() => {this.edit()}}></i>
-                            <i className="fa fa-times remove" onClick={() => {this.remove()}}></i>
-                        </div>
-                    ) : (
-                        <div className="add-recipe-part-info">
-                            <p className="add-recipe-part-name">{name}</p>
-                            <i className="fa fa-pencil edit part" onClick={() => {this.editDisplay()}}></i>
-                            <i className="fa fa-times delete part" onClick={() => {this.remove()}}></i>
-                        </div>
-                    )
-                }
-                
-                {
-                    ingredients.map((item, index) => {
-                        return (
-                            <IngredientItem recipe={item} 
-                                kind={1}
-                                remove={this.props.removeIngrePart} 
-                                edit={this.props.editIngrePart} 
-                                idx={index} 
-                                partIdx={this.props.idx}
-                                key={item.id}  />
-                        )
-                    })
-                }
-                {
-                    editIngre == false ? (
-                        <div id="add-recipe-btn" onClick={() => this.addIngre()}>
-                            ADD INGREDIENT
-                        </div>
-                    ) : (
-                        <div className="add-recipe-ingredient-item new">
-                            <input type="number" min="0" placeholder="Ex: 1" className="add-recipe-amount input" value={this.state.amount} onChange={(e) => {this.setState({amount: e.target.value})}}></input>
-                            <input type="text" placeholder="Ex: kg" className="add-recipe-unit input" value={this.state.unit} onChange={(e) => {this.setState({unit: e.target.value})}}></input>
-                            <input type="text" placeholder="Ex: pork" className="add-recipe-ingre-name input" value={this.state.nameIngre} onChange={(e) => {this.setState({nameIngre: e.target.value})}}></input>
-                            <i className="fa fa-check check" onClick={() => {this.addInput()}}></i>
-                            <i className="fa fa-times remove" onClick={() => {this.removeInput()}}></i>
-                        </div> 
-                    )
-                }
-            </div>
-        )
-    }
-}
-
-class DirectionInput extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            img: null,
-            content: '',
-            title: '',
-            idx: 0, 
-        }
-        this.updateContent = this.updateContent.bind(this)
-        this.removeContent = this.removeContent.bind(this)
-        this.removeImage = this.removeImage.bind(this)
-        this.updateImage = this.updateImage.bind(this)
-        this.addImage = this.addImage.bind(this)
-        this.clickImage = this.clickImage.bind(this)
-    }
-
-    clickImage() {
-        const inputId = '#img' + this.props.index.toString() + this.props.time
-        $(inputId).click();
-    }
-
-    addImage(e) {
-        console.log(e.target.files[0])
-        if (e.target.files[0] != 'undefined') {
-            this.setState({img: e.target.files[0]})
-            this.setState({idx: 3})
-        }
-    }
-
-    updateImage() {
-        const { img, title } = this.state
-        if (img != null && title != '') {
-            this.setState({img: ''})
-            this.setState({title: ''})
-            this.setState({idx: 0})
-            this.props.updateImage(img, title, this.props.index)
-        } else {
-            alert("Please add image and comment for image")
-        }
-        
-    }
-
-    removeImage() {
-        this.setState({img: ''})
-        this.setState({title: ''})
-        this.setState({idx: 0})
-    }
-
-    updateContent() {
-        const { content } = this.state;
-        if (content == '')
-            alert("Please add content")
-        else {
-            this.props.updateDirection(content, this.props.index)
-            this.setState({content: ''})
-            this.setState({idx: 0})
-        }
-    }
-
-    removeContent() {
-        this.setState({content: ''})
-        this.setState({idx: 0})
-    }
-
-   
-    render() {
-        const { idx, content , img, title} = this.state
-        const inputId = 'img' + this.props.index.toString() + this.props.time
-        if (idx == 0) {
-            return (
-                <div style={{width: '100%', margin: '10px 0', textAlign: 'center'}}>
-                    <i className="fa fa-plus check" aria-hidden="true" onClick={() => {this.setState({idx: 1})}}></i>
-                </div>
-            )
-        }
-        else if (idx == 1) {
-            return (
-                <div className="insert">
-                    <i className="fa fa-times check" onClick={() => {this.removeContent()}}></i>
-                    <div className="add-recipe-direction">
-                        <div className="dir-btn">
-                            <div id="add-recipe-btn" onClick={() => this.setState({idx: 2})}>INSTRUCTION</div>
-                        </div>
-                        <div className="dir-btn">
-                            <div id="add-recipe-btn" onClick={() => this.clickImage()}>IMAGE</div>
-                        </div>
-                        <input type="file" name="file" id={inputId} onChange={(e) => this.addImage(e)} style={{display: 'none'}}></input>
-                    </div>
-                </div>
-            )
-        } else if (idx == 2) {
-            return (
-                <div className="insert">
-                    <div className="input-content">
-                        <input type="text" className="content-add" value={content} onChange={(e) => this.setState({content: e.target.value})} placeholder="Add new step ..."></input>
-                        <i className="fa fa-check check" onClick={() => {this.updateContent()}}></i>
-                        <i className="fa fa-times remove" onClick={() => {this.removeContent()}}></i>
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <div className="insert">
-                    <div className="input-image">
-                        {
-                            this.state.img != null ? (
-                                <img src={URL.createObjectURL(this.state.img)} className="input-image-img"></img>
-                            ) : null
-                        }
-                        <input type="file" name="file" id={inputId} onChange={(e) => this.addImage(e)} style={{display: 'none'}}></input>
-                        <div className="input-content">
-                            <input type="text" className="content-add dir-title" value={title} onChange={(e) => this.setState({title: e.target.value})} placeholder="Comment your image..."></input>
-                            <i className="fa fa-upload edit" onClick={() => {this.clickImage()}}></i>
-                            <i className="fa fa-check delete" onClick={() => {this.updateImage()}}></i>
-                            <i className="fa fa-times edit" onClick={() => {this.removeImage()}}></i>
-                        </div>
-                    </div>
-                </div>
-            )
-        }
-    }
-
-
-}
-
-class DirectionItem extends Component {
-    constructor(props) {
-        super(props)
-        this.state ={
-            idx: 0,
-            img: this.props.img,
-            title: this.props.title,
-            content: this.props.content,
-            kind: this.props.kind, 
-        }
-        this.addInputContent = this.addInputContent.bind(this)
-        this.removeContent = this.removeContent.bind(this)
-        this.addInputImg = this.addInputImg.bind(this)
-        this.removeImage = this.removeImage.bind(this)
-        this.updateContent = this.updateContent.bind(this)
-        this.addImage = this.addImage.bind(this)
-        this.updateImage = this.updateImage.bind(this)
-        this.clickImage = this.clickImage.bind(this)
-    }
-
-    addInputContent() {
-        this.setState({idx: 1})
-    }
-
-    addInputImg() {
-        this.setState({idx: 1})
-    }
-
-    removeContent() {
-        this.props.removeContent(this.props.index)
-    }
-
-    removeImage() {
-        this.props.removeImg(this.props.index)
-    }
-
-    updateContent() {
-        if (this.state.content != '') {
-            this.props.updateContent(this.state.content, this.props.index)
-            this.setState({idx: 0})
-        } else{
-            alert("Please add content")
-        } 
-    }
-
-    addImage(e) {
-        this.setState({img: e.target.files[0]})
-    }
-
-    updateImage() {
-        if (this.state.img != null && this.state.title != '') {
-            this.props.updateImage(this.state.img, this.state.title, this.props.index)
-            this.setState({idx: 0})
-        } else {
-            alert("Please add image and comment for image")
-        }
-    }
-
-    clickImage() {
-        const inputId = '#img2' + this.props.index + this.props.time
-        $(inputId).click();
-    }
-
-
-    render() {
-
-        const { idx, img, title, content, kind } = this.state
-        if (idx == 0) {
-            if (kind == 0) {
-                return (
-                    <div className="input-content border-content">
-                        <p className="content-add not-input">{content}</p>
-                        <i className="fa fa-pencil edit" onClick={() => {this.addInputContent()}}></i>
-                        <i className="fa fa-times delete" onClick={() => {this.removeContent()}}></i>
-                    </div>
-                )
-            }
-            else {
-                return (
-                    <div className="insert">
-                        <div className="edit-img">
-                            <i className="fa fa-pencil edit" onClick={() => {this.addInputImg()}}></i>
-                            <i className="fa fa-times delete" onClick={() => {this.removeImage()}}></i>
-                        </div>
-                        {
-                            img != null ? (
-                                <img src={URL.createObjectURL(img)} className="input-image-img"></img>
-                            ) : null
-                        }
-                        <div className="info-title">
-                            {title}
-                        </div>
-                    </div>
-                )
-            }
-        } else {
-            if (kind == 0) {
-                return (
-                    <div className="input-content border-content">
-                        <input type="text" value={content} className="content-add" onChange={(e) => this.setState({content: e.target.value})}></input>
-                        <i className="fa fa-check check" onClick={() => {this.updateContent()}}></i>
-                        <i className="fa fa-times remove" onClick={() => {this.removeContent()}}></i>
-                    </div>
-                )
-            } else {
-                const inputId = 'img2' + this.props.index + this.props.time
-                return (
-                    <div className="insert">
-                        {
-                            img != null ? (
-                                <img src={URL.createObjectURL(img)} className="input-image-img"></img>
-                            ) : null
-                        }
-                        <input type="file" name="file" id={inputId} onChange={(e) => this.addImage(e)} style={{display: 'none'}}></input>
-                        <div className="input-content">
-                            <input type="text" className="content-add dir-title" value={title} onChange={(e) => this.setState({title: e.target.value})}></input>
-                            <i className="fa fa-upload edit" onClick={() => {this.clickImage()}}></i>
-                            <i className="fa fa-check delete" onClick={() => {this.updateImage()}}></i>
-                            <i className="fa fa-times edit" onClick={() => {this.removeImage()}}></i>
-                        </div>
-                    </div>
-                )
-            }
-        }
-    }
-}
-
-
-export default class AddRecipe extends Component {
+class AddRecipe extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -469,6 +31,7 @@ export default class AddRecipe extends Component {
             editIngre: false,
             editPart: false,
             directions: [],
+            description: ''
         }
         this.remove = this.remove.bind(this)
         this.edit = this.edit.bind(this)
@@ -494,7 +57,7 @@ export default class AddRecipe extends Component {
     }
 
     uploadRecipe() {
-        const { directions, name, img, time, level, serves, ingredients, parts } = this.state;
+        const { directions, name, img, time, level, serves, ingredients, parts, description } = this.state;
         const date = Date.now()
         var form = new FormData();
         form.append('image', img, date + '-' + img.name);
@@ -521,6 +84,7 @@ export default class AddRecipe extends Component {
             }
         }
         const recipe = {
+            description: description,
             name: name, 
             time: time,
             level: level,
@@ -535,26 +99,13 @@ export default class AddRecipe extends Component {
             method: 'POST',
             body: form
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then((response) => {
-            alert(response)
-            // this.setState({
-            //     name: '',
-            //     level: 'easy',
-            //     time: '',
-            //     serves: '',
-            //     img: null,
-            //     addIngredient: false,
-            //     ingredients: [],
-            //     parts: [],
-            //     partName: '',
-            //     amount: '',
-            //     ingreName: '',
-            //     unit: '', 
-            //     editIngre: false,
-            //     editPart: false,
-            //     directions: [],
-            // })
+            if (response.errors != null) {
+                alert(response.errors)
+            } else {
+                alert('Uploaded successfully')
+            }
         })
         .catch(err => console.log(err))
     }
@@ -708,6 +259,22 @@ export default class AddRecipe extends Component {
         this.setState({editPart: false})
     }
 
+    componentDidMount() {
+        var textarea = document.getElementById('add-recipe-description')
+        textarea.addEventListener('keydown', autosize);
+
+        function autosize(){
+        var el = this;
+        setTimeout(function(){
+            el.style.cssText = 'height:auto; padding:0';
+            // for box-sizing other than "content-box" use:
+            // el.style.cssText = '-moz-box-sizing:content-box';
+            el.style.cssText = 'height:' + el.scrollHeight + 'px';
+        },0);
+        }
+    }
+
+
     render() {
         return (
             <div id="add-recipe-container">
@@ -715,8 +282,10 @@ export default class AddRecipe extends Component {
                     <Logo />
                     <Navigator />
                     <SearchBar />
+                    <SignIn isSignIn={this.props.isSignIn}/>
+                    <SignInModal isShowModal={this.props.isShowModal}/>
                     <p id="add-recipe-title">INNOVATE YUMMY RECIPES</p>
-                    <i className="fa fa-upload"  id="add-recipe" style={{position: "absolute", bottom: '5%', right: '5%'}}
+                    <i className="fa fa-upload"  id="add-recipe" style={{position: "absolute", bottom: '5%', right: '2%'}}
                             onClick={() =>{this.uploadRecipe()}}><b id="add-recipe-text" style={{marginLeft: 5}}>Upload recipe</b></i>
                 </div>
                 <div id="add-recipe-content">
@@ -735,6 +304,9 @@ export default class AddRecipe extends Component {
                                 this.state.img != null ? 'EDIT IMAGE' : 'UPLOAD IMAGE'
                             }
                         </div>
+                        <p>
+                            <textarea type="text" rows='1' placeholder="Description ..." onChange={(e) => {this.setState({description: e.target.value})}} id="add-recipe-description"></textarea>
+                        </p>
                         <input type="file" name="file" id="upload-image" onChange={(e) => this.uploadImage(e)} style={{display: 'none'}}></input>
                     </div>
                     <div id="add-recipe-left-col">
@@ -859,3 +431,13 @@ export default class AddRecipe extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        isSignIn: state.isSignIn,
+        isShowModal: state.isShowModal
+    }
+}
+
+export default connect(mapStateToProps)(AddRecipe)

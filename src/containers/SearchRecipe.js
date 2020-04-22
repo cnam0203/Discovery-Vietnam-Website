@@ -4,9 +4,14 @@ import Navigator from '../components/Navigator'
 import SearchBar from '../components/SearchBar'
 import RecipePreview from '../components/RecipePreview'
 import './searchrecipe.css'
+import SignIn from '../components/SignIn'
+import SignInModal from '../components/SignInModal'
+import { connect } from 'react-redux'
+import {Link} from 'react-router-dom'
+import AddRecipeButton from '../components/AddRecipeButton'
 
 
-export default class SearchRecipe extends Component {
+class SearchRecipe extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,6 +44,9 @@ export default class SearchRecipe extends Component {
                     <Logo />
                     <Navigator />
                     <SearchBar />
+                    <SignIn isSignIn={this.props.isSignIn}/>
+                    <SignInModal isShowModal={this.props.isShowModal}/>
+                    <AddRecipeButton />
                 </div>
         <p id="result">{`There are total `}<strong>{this.state.listRecipes.length}</strong>{` recipe results for "`}<strong>{this.props.match.params.id}</strong>{`"`}</p>
                 <div id="list-result">
@@ -54,3 +62,12 @@ export default class SearchRecipe extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isSignIn: state.isSignIn,
+        isShowModal: state.isShowModal
+    }
+}
+
+export default connect(mapStateToProps)(SearchRecipe)

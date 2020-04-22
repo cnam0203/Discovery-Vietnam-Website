@@ -18,9 +18,9 @@ export default class App extends Component {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/cuisine" exact component={Cuisine} />
-                    <Route exact path="/cuisine/addrecipe" component={AddRecipe} />
-                    <Route exact path="/cuisine/search/:id" component={SearchRecipe} />
-                    <Route exact path="/cuisine/recipe/:id" component={Recipe} />
+                    <Route path="/cuisine/addrecipe" exact component={AddRecipe} />
+                    <Route path="/cuisine/search/:id" exact component={SearchRecipe} />
+                    <Route path="/cuisine/recipe/:id" exact component={Recipe} />
                     <Route component={NotFound}/>
                 </Switch>
             </Router>

@@ -1,10 +1,13 @@
 import './logo.css'
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 
 const Logo = () => {
     return (
-        <img src='/logo.png' id="logo" onClick={() => window.location.href = '/'}/>
+        <Link to='/'>
+            <img src='/logo.png' id="logo"/>
+        </Link>
     )
 }
 

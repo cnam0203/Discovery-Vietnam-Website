@@ -26,7 +26,7 @@
 }
 
 #north:hover, #south:hover, #center:hover {
-    color: #fa91f3;
+    color: #FFCC57;
 }
 
 #add-recipe {
@@ -41,7 +41,7 @@
 
 #add-recipe:hover {
     cursor: pointer;
-    color: #fa91f3;
+    color: #FFCC57;
 }
 /* #north:hover #pho-br{
     animation: slideshow ease 5s;
@@ -64,7 +64,7 @@
         opacity: 1;
     }
     100% {
-        left: 100%;
+        left: 0%;
         opacity: 0;
     }
 }

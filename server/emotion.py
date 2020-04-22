@@ -6,7 +6,21 @@ import keras
 from keras.models import load_model
 import cv2
 import sys
+# app.get('/emotion', (req, res) => {
+#         var spawn = require('child_process').spawn;
+#         var process = spawn('python', ["./emotion.py", '../uploads/url.png'])
+#         process.stdout.on('data', function(data) {
+#             res.send(data.toString())
+#         })
+# })
 
+# app.get('/getRandomImage/:id', (req, res) => {
+#    var reqUrl = req.url
+#    var index = reqUrl.split('/')
+#     var link = '../uploads/' + index[index.length - 1] + '.jpg';
+#     console.log(link)
+#     res.sendFile(path.join(__dirname, link))
+# })
 
 # emotion_dict= {'Negative': 0, 'Negative': 5, 'Normal': 4, 'Negative': 1, 'Positive': 6, 'Negative': 2, 'Positive': 3}
 

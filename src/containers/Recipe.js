@@ -3,152 +3,24 @@ import './recipe.css'
 import Navigator from '../components/Navigator'
 import Logo from '../components/Logo'
 import SearchBar from '../components/SearchBar'
+import SignIn from '../components/SignIn'
+import SignInModal from '../components/SignInModal'
+import { connect } from 'react-redux'
+import {Link} from 'react-router-dom'
+import AddRecipeButton from '../components/AddRecipeButton'
 
-export default class Recipe extends Component {
+class Recipe extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            recipe: null
-            // recipe: {
-            //     id: 1234,
-            //     name: 'Bánh mì',
-            //     time: '1h30min',
-            //     level: 'Difficult',
-            //     src: '/pho-br.png',
-            //     like: 13,
-            //     serve: 4,
-            //     ingredients: [
-            //         {
-            //             part: 'WHISK TOGETHER',
-            //             partIngredient: [
-            //                 {
-            //                     amount: 1,
-            //                     unit: 'kg',
-            //                     name: 'pork belly'
-            //                 },
-            //                 {
-            //                     amount: 1,
-            //                     unit: 'kg',
-            //                     name: 'pork belly'
-            //                 },
-            //                 {
-            //                     amount: 1,
-            //                     unit: 'kg',
-            //                     name: 'pork belly'
-            //                 },
-            //             ]
-            //         },
-            //         {
-            //             part: 'WHISK TOGETHER',
-            //             partIngredient: [
-            //                 {
-            //                     amount: 1,
-            //                     unit: 'kg',
-            //                     name: 'pork belly'
-            //                 },
-            //                 {
-            //                     amount: 1,
-            //                     unit: 'kg',
-            //                     name: 'pork belly'
-            //                 },
-            //                 {
-            //                     amount: 1,
-            //                     unit: 'kg',
-            //                     name: 'pork belly'
-            //                 },
-            //             ]
-            //         },
-            //         {
-            //             part: 'WHISK TOGETHER',
-            //             partIngredient: [
-            //                 {
-            //                     amount: 1,
-            //                     unit: 'kg',
-            //                     name: 'pork belly'
-            //                 },
-            //                 {
-            //                     amount: 1,
-            //                     unit: 'kg',
-            //                     name: 'pork belly'
-            //                 },
-            //                 {
-            //                     amount: 1,
-            //                     unit: 'kg',
-            //                     name: 'pork belly'
-            //                 },
-            //             ]
-            //         }
-            //     ],
-            //     direction: [
-            //         {
-            //             step: 1,
-            //             kind: 0,
-            //             content: 'Keep it warm and then slice into 3 pieces'
-            //         },
-            //         {
-            //             step: 2,
-            //             kind: 1,
-            //             content: '/pho-br.png'
-            //         },
-            //         {
-            //             step: 3,
-            //             kind: 2,
-            //             content: 'H1. Pho bo'
-            //         },
-            //         {
-            //             step: 4,
-            //             kind: 0,
-            //             content: 'Keep it warm and then slice into 3 pieces'
-            //         },
-            //         {
-            //             step: 5,
-            //             kind: 1,
-            //             content: '/banhmi.jpg'
-            //         },
-            //         {
-            //             step: 6,
-            //             kind: 2,
-            //             content: 'H1. Pho bo'
-            //         },
-            //         {
-            //             step: 7,
-            //             kind: 0,
-            //             content: 'Keep it warm and then slice into 3 pieces'
-            //         },
-            //         {
-            //             step: 8,
-            //             kind: 1,
-            //             content: '/pho-br.png'
-            //         },
-            //         {
-            //             step: 9,
-            //             kind: 2,
-            //             content: 'H1. Pho bo'
-            //         },
-            //         {
-            //             step: 10,
-            //             kind: 0,
-            //             content: 'Keep it warm and then slice into 3 pieces'
-            //         },
-            //         {
-            //             step: 11,
-            //             kind: 0,
-            //             content: 'Keep it warm and then slice into 3 pieces'
-            //         },
-            //         {
-            //             step: 12,
-            //             kind: 0,
-            //             content: 'Keep it warm and then slice into 3 pieces'
-            //         }
-            //     ]
-            // }
+            recipe: null,
         }
     }
     componentDidMount() {
         const url = '/getRecipeInfo/' + this.props.match.params.id;
         fetch(url, {method: 'GET'})
         .then((res) => res.json())
-        .then((res) => this.setState({recipe: res.recipe}))
+        .then((res) => res.errors === undefined ? this.setState({recipe: res.recipe}) : null)
         .catch((err) => alert(err))
     }
 
@@ -161,14 +33,19 @@ export default class Recipe extends Component {
                     <Logo />
                     <Navigator />
                     <SearchBar />
-                    <i className="fa fa-pencil"  id="add-recipe" style={{position: 'absolute', right: '5%', bottom: '5%'}}
-                        onClick={() =>{ window.location.href = '/cuisine/addrecipe'}}><b id="add-recipe-text">Add a recipe</b></i>
+                    <SignIn isSignIn={this.props.isSignIn}/>
+                    <SignInModal isShowModal={this.props.isShowModal}/>
+                    <AddRecipeButton />
                 </div>
                 {
                     recipe != null ? (
                         <div className="recipe">
                                             <p className="name-recipe">{recipe.name}</p>
                                             <img src={recipe.imgUrl} className="img-recipe"/>
+                                            <div id="recipe-title">
+                                                <p id="ingredient-title">DESCRIPTION</p>
+                                                <p style={{margin: 0, textAlign: 'center'}}>{recipe.description}</p>
+                                            </div>
                                             <div className="left-col">
                                                 <div className="descript">
                                                     <div className="time"><b className="property">READY IN: </b>{recipe.time}</div>
@@ -239,3 +116,12 @@ export default class Recipe extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isSignIn: state.isSignIn,
+        isShowModal: state.isShowModal
+    }
+}
+
+export default connect(mapStateToProps)(Recipe)

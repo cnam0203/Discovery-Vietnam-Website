@@ -1,0 +1,77 @@
+#signin-modal {
+    position: fixed; /* Stay in place */
+    z-index: 4; /* Sit on top */
+    padding-top: 12%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+#modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 22%;
+    color: black;
+    position: relative;
+    border-radius: 10px;
+    border: 0px;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.sign-div {
+    width: 50%;
+    padding: 15px;
+    font-size: 20px;
+    float: left;
+    text-align: center;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    margin-bottom: 20px;
+}
+
+.sign-div:hover {
+    cursor: pointer;
+}
+
+#remove-modal {
+    position: absolute; 
+    top: 2%;
+    right: 2%;
+    text-align: center;
+    font-weight: bold;
+}
+
+#remove-modal:hover {
+    cursor: pointer;
+}
+
+.input-sign-in {
+    font-size: 13px;
+    width: 80%;
+    margin: 10px 10%;
+    border-radius: 15px;
+    padding: 10px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    border: 1px solid black;
+}
+
+.btn-sign-in {
+    border: 0;
+    background-color: #f59de8;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border-radius: 20px;
+}
+
+.btn-sign-in:hover {
+    cursor: pointer;
+}
+

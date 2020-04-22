@@ -6,9 +6,14 @@ import './cuisine.css'
 import './searchrecipe.css'
 import '../style.css'
 import RecipePreview from '../components/RecipePreview'
+import SignIn from '../components/SignIn'
+import SignInModal from '../components/SignInModal'
+import { connect } from 'react-redux'
+import {Link} from 'react-router-dom'
+import AddRecipeButton from '../components/AddRecipeButton'
 
 
-export default class Cuisine extends Component {
+class Cuisine extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,8 +29,11 @@ export default class Cuisine extends Component {
         .then((res) =>
             res.json())
         .then((res) => {
-            console.log(Object.keys(res.recipes[0]))
-            this.setState({listRecipes: res.recipes})})
+                if (res.errors == undefined) {
+                    this.setState({listRecipes: res.recipes})
+                }
+            }
+        )
         .catch((err) => console.log(err))
 
         $(document).ready(function(){
@@ -73,11 +81,12 @@ export default class Cuisine extends Component {
                     <Navigator />
                     <Logo />
                     <SearchBar />
+                    <SignIn isSignIn={this.props.isSignIn}/>
+                    <SignInModal isShowModal={this.props.isShowModal}/>
                     <p className='region' id='north' style={{position: 'absolute', left: '28%', top: '40%'}}>North</p>
                     <p className='region' id='center' style={{position: 'absolute', left: '43%', top: '50%'}}>Center</p>
                     <p className='region' id='south' style={{position: 'absolute', left: '60%', top: '60%'}}>South</p>
-                    <i className="fa fa-pencil"  id="add-recipe"style={{position: 'absolute', right: '5%', bottom: '5%'}}
-                        onClick={() =>{ window.location.href = '/cuisine/addrecipe'}}><b id="add-recipe-text">Add a recipe</b></i>
+                    <AddRecipeButton />
                 </div>
                 <div id="list-result">
                     {
@@ -92,3 +101,12 @@ export default class Cuisine extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isSignIn: state.isSignIn,
+        isShowModal: state.isShowModal
+    }
+}
+
+export default connect(mapStateToProps)(Cuisine)

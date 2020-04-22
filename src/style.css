@@ -39,7 +39,7 @@ img{
   }
 
 .my-link{
-    color: #fa91f3;
+    color: #FFCC57;
     text-decoration: none;
     font-weight: 600;
 }
@@ -59,7 +59,7 @@ img{
 }
 
 .none:hover {
-  color: #fa91f3;
+  color: #FFCC57;
 }
 
 #button {
@@ -70,8 +70,7 @@ img{
 .menu{
     text-shadow: 3px 3px 6px #000;
     height: 20px;
-    margin-right: 20px;
-    margin-top: 27px;
+    margin-left: 20px;
     padding: 0;
     float: left;
     font-size: 20px;
@@ -131,7 +130,7 @@ h4{
 }
 
 .title:hover {
-  color: #fa91f3;
+  color: #FFCC57;
 }
 
 .quote {
@@ -162,13 +161,13 @@ body {
 }
 
 .scroll-down:hover {
-  border-color: #fa91f3;
-  color: #fa91f3;
+  border-color: #FFCC57;
+  color: #FFCC57;
 }
 
 .scroll-down:hover::before {
-  border-color: #fa91f3;
-  color: #fa91f3;
+  border-color: #FFCC57;
+  color: #FFCC57;
 }
 
 .scroll-down {

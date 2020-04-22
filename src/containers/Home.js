@@ -5,17 +5,20 @@ import 'aos/dist/aos.css';
 import Logo from '../components/Logo'
 import Navigator from '../components/Navigator'
 import Button from '../components/Button'
+import SignIn from '../components/SignIn'
+import SignInModal from '../components/SignInModal'
+import { connect } from 'react-redux'
 
 
-
-export default class Home extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
         this.scrollDown = this.scrollDown.bind(this)
         this.state = {
-            index: 0
+            index: 0,
         }
     }
+
 
     componentDidMount() {
         const parallax = document.getElementById('parallax');
@@ -56,17 +59,19 @@ export default class Home extends Component {
      render() {
         return (
             <div>
-            <div className="container-home" id="parallax">
-                <div> 
-                        <Logo />
-                        <Navigator />
-                        <div id="title-container">
-                            <p className='title'>A glimpse of Vietnam</p>
-                            <p className="quote">- Let's taste new experiences -</p>
-                        </div>
-                        <div class="scroll-down" onClick={() => this.scrollDown()}></div>
+                 <SignInModal isShowModal={this.props.isShowModal}/>
+                <div className="container-home" id="parallax">
+                    <div> 
+                            <Logo />
+                            <Navigator />
+                            <SignIn isSignIn={this.props.isSignIn}/>
+                            <div id="title-container">
+                                <p className='title'>A glimpse of Vietnam</p>
+                                <p className="quote">- Let's taste new experiences -</p>
+                            </div>
+                            <div class="scroll-down" onClick={() => this.scrollDown()}></div>
+                    </div>
                 </div>
-            </div>
                 <div className="home-body">
                     <section>
                         <div className="container" id="history">
@@ -159,3 +164,12 @@ export default class Home extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isSignIn: state.isSignIn,
+        isShowModal: state.isShowModal
+    }
+}
+
+export default connect(mapStateToProps)(Home)

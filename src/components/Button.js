@@ -12,7 +12,7 @@ export default class Button extends Component {
                 background: this.props.color === 'white' ? '#000' : '#fff',
                 color: this.props.color === 'white' ? '#fff' : '#000'}} 
                 onMouseOver={(e) => {
-                    e.target.style.background = '#fa91f3'
+                    e.target.style.background = '#FFCC57'
                     e.target.style.color = '#fff'}}
                 onMouseLeave={(e) => {
                     e.target.style.background = this.props.color === 'white' ? '#000' : '#fff',
